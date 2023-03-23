@@ -35,8 +35,11 @@ const RatingSummary: FC<ISummaryProp> = (props): JSX.Element => {
     default:
     }
     return (
-      <div className={classes.label}>
-        <img src={starImg} alt="" width="10" height="10" />&nbsp;
+      <div
+        className={classes.label}
+        id={`${ratingId}-label`}
+      >
+        <img src={starImg} alt="" width="10" height="10" />
         {defaultLabel}
       </div>
     );
@@ -61,7 +64,7 @@ const RatingSummary: FC<ISummaryProp> = (props): JSX.Element => {
   };
 
   return(
-    <div className={classes.ratingsWrapper}>
+    <div className={classes.ratingsWrapper} id="ratings-container">
       {Object.keys(ratings).map((ratingId: RatingIds) => (
         <div
           key={ratingId}
@@ -71,6 +74,7 @@ const RatingSummary: FC<ISummaryProp> = (props): JSX.Element => {
           <div
             style={{width: `${getBarWidth(ratingId)*100}%`}}
             className={classes.barWrapper}
+            id={`${ratingId}-bar`}
           >
             <div
               style={{ ...getStyles(Elements.Chart, ratingId)}}
@@ -82,6 +86,7 @@ const RatingSummary: FC<ISummaryProp> = (props): JSX.Element => {
                 <span
                   className={classes.countContainer}
                   style={{ ...getStyles(Elements.Count, ratingId)}}
+                  id={`${ratingId}-count`}
                 >
                   {formatToNumberWithCommas(ratings[ratingId])}
                 </span>
