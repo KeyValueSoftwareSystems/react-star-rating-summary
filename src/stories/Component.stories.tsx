@@ -27,7 +27,13 @@ RatingSummary.args = {
   showCount: true,
   showAnimation: true,
   styles: {
-    Chart: (ratingId: string) => (ratingId === 'four' && { backgroundColor: 'purple' }),
     Count: (ratingId: string) => (ratingId === "three" && { color: "white" })
-  }
+  },
+  chartColors: {
+    five: 'red',
+    four: 'yellow',
+    three: 'orange',
+    two: 'blue',
+    one: 'green'
+  },
 };

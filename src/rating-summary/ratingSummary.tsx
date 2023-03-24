@@ -9,7 +9,8 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
     renderLabel,
     showCount = true,
     showAnimation = true,
-    styles={}} =props;
+    styles={},
+    chartColors} =props;
 
   const getRatingLabelFromRatingId = (ratingId: string): ReactElement => {
     if (renderLabel) return (renderLabel(ratingId));
@@ -75,7 +76,9 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
             id={`${ratingId}-bar`}
           >
             <div
-              style={{ ...getStyles(Elements.Chart, ratingId)}}
+              style={{
+                ...(chartColors && chartColors[ratingId] && { backgroundColor: chartColors[ratingId]}) || {},
+                ...getStyles(Elements.Chart, ratingId)}}
               className={`${classes.barContainer}
               ${classes[ratingId]}
               ${showAnimation && classes.transitions}`}

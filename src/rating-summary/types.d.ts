@@ -7,7 +7,8 @@ export type ISummaryProp = {
   renderLabel?: (ratingId: string) => ReactElement,
   showCount?: boolean,
   showAnimation?: boolean,
-  styles?: { [value in Elements]: IStyleFunction }
+  styles?: { [value in Elements]: IStyleFunction },
+  chartColors?: { [value in RatingIds]: string }
 }
 
 export type IRatings = {
