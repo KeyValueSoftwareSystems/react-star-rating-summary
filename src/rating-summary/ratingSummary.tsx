@@ -2,35 +2,33 @@ import React, { FC, ReactElement, useMemo } from 'react';
 import { ISummaryProp } from './types';
 import classes from './styles.module.scss';
 import starImg from '../assets/star-grey.svg';
-import { Elements, RatingIds } from '../constants';
+import { COMMA_SEPARATED_NUMBER_REGEX, Elements, RatingIds } from '../constants';
 
-const RatingSummary: FC<ISummaryProp> = (props): JSX.Element => {
+const RatingSummary: FC<ISummaryProp> = (props) => {
   const { ratings,
     renderLabel,
     showCount = true,
     showAnimation = true,
-    styles={}
-  } =props;
+    styles={}} =props;
 
   const getRatingLabelFromRatingId = (ratingId: string): ReactElement => {
     if (renderLabel) return (renderLabel(ratingId));
-    let defaultLabel = '';
+    let label = '';
     switch (ratingId) {
     case RatingIds.one:
-      defaultLabel = '1'
+      label = '1'
       break;
     case RatingIds.two:
-      defaultLabel = '2'
+      label = '2'
       break;
     case RatingIds.three:
-
-      defaultLabel = '3'
+      label = '3'
       break;
     case RatingIds.four:
-      defaultLabel = '4'
+      label = '4'
       break;
     case RatingIds.five:
-      defaultLabel = '5'
+      label = '5'
       break;
     default:
     }
@@ -40,12 +38,12 @@ const RatingSummary: FC<ISummaryProp> = (props): JSX.Element => {
         id={`${ratingId}-label`}
       >
         <img src={starImg} alt="" width="10" height="10" />
-        {defaultLabel}
+        {label}
       </div>
     );
   };
 
-  const formatToNumberWithCommas = (num: number): string => (num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+  const formatToNumberWithCommas = (num: number): string => (num.toString().replace(COMMA_SEPARATED_NUMBER_REGEX, ","));
 
   const getTotalRatingsCount = useMemo((): number => (
     Object.values(ratings).reduce((sum, num) => sum + (num || 0))), [ratings]);
