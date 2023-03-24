@@ -1,70 +1,70 @@
 @keyframes widthAnimation {
-	from {
-		width: 0px;
-	}
-	to {
-		width: 100%;
-	}
+  from {
+    width: 0px;
+  }
+  to {
+    width: 100%;
+  }
 }
 .ratingsWrapper {
-	display: flex;
-	flex-direction: column;
-	align-items: flex-start;
-	justify-content: flex-start;
-	width: 100%;
-	row-gap: 2px;
-	font-family: inherit;
-	.ratingWrapper {
-		display: flex;
-		align-items: center;
-		column-gap: 8px;
-		width: 100%;
-		.label {
-			display: flex;
-			align-items: center;
-			font-size: 15px;
-			line-height: 17px;
-			color: #919191;
-			min-width: max-content;
-			float: left;
-		}
-		.barWrapper {
-			max-width: 100%;
-			.barContainer {
-				height: 20px;
-				overflow-x: visible;
-				display: flex;
-				align-items: center;
-				width: 100%;
-				.countContainer {
-					font-size: 11px;
-					line-height: 17px;
-					background-color: transparent;
-					color: #65695b;
-					padding-left: 8px;
-				}
-			}
-			.transitions {
-				animation-name: widthAnimation;
-				animation-duration: 300ms;
-				animation-timing-function: ease-in-out;
-				animation-iteration-count: 1;
-			}
-		}
-		.five {
-			background-color: #9fc05a;
-		}
-		.four {
-			background-color: #add633;
-		}
-		.three {
-			background-color: #ffd834;
-		}
-		.two {
-			background-color: #ffb337;
-		}
-		.one {
-			background-color: #ff8b5a;
-		}
-	}
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  width: 100%;
+  row-gap: 2px;
+  font-family: inherit;
+  .ratingWrapper {
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    width: 100%;
+    .label {
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      line-height: 17px;
+      color: #919191;
+      min-width: max-content;
+      float: left;
+    }
+    .barWrapper {
+      max-width: 100%;
+      .barContainer {
+        height: 20px;
+        overflow-x: visible;
+        display: flex;
+        align-items: center;
+        width: 100%;
+        .countContainer {
+          font-size: 11px;
+          line-height: 17px;
+          background-color: transparent;
+          color: #65695b;
+          padding-left: 8px;
+        }
+      }
+      .transitions {
+        animation-name: widthAnimation;
+        animation-duration: 300ms;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: 1;
+      }
+    }
+    .five {
+      background-color: #9fc05a;
+    }
+    .four {
+      background-color: #add633;
+    }
+    .three {
+      background-color: #ffd834;
+    }
+    .two {
+      background-color: #ffb337;
+    }
+    .one {
+      background-color: #ff8b5a;
+    }
+  }
 }

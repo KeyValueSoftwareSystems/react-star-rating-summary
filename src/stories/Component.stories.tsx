@@ -11,8 +11,9 @@ export default {
   },
 } as ComponentMeta<typeof Component>;
 
-
-const Template: ComponentStory<typeof Component> = (args) => <Component {...args} />;
+const Template: ComponentStory<typeof Component> = (args) => (
+  <Component {...args} />
+);
 
 export const RatingSummary = Template.bind({});
 RatingSummary.args = {
@@ -27,7 +28,7 @@ RatingSummary.args = {
   showCount: true,
   showAnimation: true,
   styles: {
-    Count: (ratingId: string) => (ratingId === "three" && { color: "white" })
+    Count: (ratingId: string) => ratingId === 'three' && { color: 'white' },
   },
   chartColors: {
     five: 'red',

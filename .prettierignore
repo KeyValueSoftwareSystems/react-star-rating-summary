@@ -1,0 +1,6 @@
+*.md
+*.json
+*.svg
+*.png
+*.jpg
+.eslinrc
