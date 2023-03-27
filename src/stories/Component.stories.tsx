@@ -18,11 +18,11 @@ const Template: ComponentStory<typeof Component> = (args) => (
 export const RatingSummary = Template.bind({});
 RatingSummary.args = {
   ratings: {
-    5: 100,
-    4: 200,
-    3: 300,
-    2: 1000,
-    1: 400
+    5: 1148459,
+    4: 365957,
+    3: 141135,
+    2: 57472,
+    1: 134055
   }
   // renderLabel: (ratingId: string) => ((ratingId === '1' && (<>now</>) || <>{ratingId}</>)),
   // showCount: true,
