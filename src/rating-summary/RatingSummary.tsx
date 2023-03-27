@@ -1,4 +1,4 @@
-import React, { FC, ReactElement, useMemo } from 'react';
+import React, { FC, useMemo } from 'react';
 import { ISummaryProp } from './types';
 import classes from './styles.module.scss';
 import RatingLabel from '../rating-label';

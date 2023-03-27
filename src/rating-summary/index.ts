@@ -1,3 +1,3 @@
-import RatingSummary from './ratingSummary';
+import RatingSummary from './RatingSummary';
 
 export default RatingSummary;
