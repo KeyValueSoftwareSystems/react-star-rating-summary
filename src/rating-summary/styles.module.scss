@@ -19,15 +19,6 @@
     align-items: center;
     column-gap: 8px;
     width: 100%;
-    .label {
-      display: flex;
-      align-items: center;
-      font-size: 15px;
-      line-height: 17px;
-      color: #919191;
-      min-width: max-content;
-      float: left;
-    }
     .barWrapper {
       max-width: 100%;
       .barContainer {
@@ -49,6 +40,7 @@
         animation-duration: 300ms;
         animation-timing-function: ease-in-out;
         animation-iteration-count: 1;
+        transition: width 0.3s ease-in-out;
       }
     }
     .five {

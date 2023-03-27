@@ -7,8 +7,8 @@ export default {
   component: Component,
   parameters: {
     // More on Story layout: https://storybook.js.org/docs/react/configure/story-layout
-    layout: 'fullscreen',
-  },
+    layout: 'fullscreen'
+  }
 } as ComponentMeta<typeof Component>;
 
 const Template: ComponentStory<typeof Component> = (args) => (
@@ -18,23 +18,23 @@ const Template: ComponentStory<typeof Component> = (args) => (
 export const RatingSummary = Template.bind({});
 RatingSummary.args = {
   ratings: {
-    five: 100,
-    four: 200,
-    three: 300,
-    two: 1000,
-    one: 400
-  },
-  // renderLabel: (ratingId: string) => ((ratingId === 'one' && (<>now</>) || <>{ratingId}</>)),
-  showCount: true,
-  showAnimation: true,
-  styles: {
-    Count: (ratingId: string) => ratingId === 'three' && { color: 'white' },
-  },
-  chartColors: {
-    five: 'red',
-    four: 'yellow',
-    three: 'orange',
-    two: 'blue',
-    one: 'green'
-  },
+    5: 100,
+    4: 200,
+    3: 300,
+    2: 1000,
+    1: 400
+  }
+  // renderLabel: (ratingId: string) => ((ratingId === '1' && (<>now</>) || <>{ratingId}</>)),
+  // showCount: true,
+  // showAnimation: true,
+  // styles: {
+  //   Count: (ratingId: number) => ratingId === 3 && { color: 'white' },
+  // },
+  // chartColors: {
+  //   5: '#000',
+  //   4: 'yellow',
+  //   3: 'orange',
+  //   2: 'blue',
+  //   1: 'green'
+  // },
 };

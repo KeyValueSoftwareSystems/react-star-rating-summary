@@ -7,11 +7,11 @@ import { IRatings } from '../rating-summary/types';
 const getById = queryByAttribute.bind(null, 'id');
 describe('RatingSummary', () => {
   const ratings: IRatings = {
-    one: 50,
-    two: 75,
-    three: 100,
-    four: 150,
-    five: 200,
+    5: 200,
+    4: 150,
+    3: 100,
+    2: 75,
+    1: 50
   };
   const total = 575;
   it('should render the RatingSummary component', () => {
@@ -22,11 +22,11 @@ describe('RatingSummary', () => {
 
   it('should display the rating count for each rating ID when showCount is true', () => {
     const { container } = render(<RatingSummary ratings={ratings} />);
-    const oneStarRatingCount = getById(container, 'one-count');
-    const twoStarRatingCount = getById(container, 'two-count');
-    const threeStarRatingCount = getById(container, 'three-count');
-    const fourStarRatingCount = getById(container, 'four-count');
-    const fiveStarRatingCount = getById(container, 'five-count');
+    const oneStarRatingCount = getById(container, '1-count');
+    const twoStarRatingCount = getById(container, '2-count');
+    const threeStarRatingCount = getById(container, '3-count');
+    const fourStarRatingCount = getById(container, '4-count');
+    const fiveStarRatingCount = getById(container, '5-count');
     expect(oneStarRatingCount?.textContent).toEqual('50');
     expect(twoStarRatingCount?.textContent).toEqual('75');
     expect(threeStarRatingCount?.textContent).toEqual('100');
@@ -38,11 +38,11 @@ describe('RatingSummary', () => {
     const { container } = render(
       <RatingSummary ratings={ratings} showCount={false} />
     );
-    const oneStarRatingCount = getById(container, 'one-count');
-    const twoStarRatingCount = getById(container, 'two-count');
-    const threeStarRatingCount = getById(container, 'three-count');
-    const fourStarRatingCount = getById(container, 'four-count');
-    const fiveStarRatingCount = getById(container, 'five-count');
+    const oneStarRatingCount = getById(container, '1-count');
+    const twoStarRatingCount = getById(container, '2-count');
+    const threeStarRatingCount = getById(container, '3-count');
+    const fourStarRatingCount = getById(container, '4-count');
+    const fiveStarRatingCount = getById(container, '5-count');
     expect(oneStarRatingCount).toBeNull();
     expect(twoStarRatingCount).toBeNull();
     expect(threeStarRatingCount).toBeNull();
@@ -52,11 +52,11 @@ describe('RatingSummary', () => {
 
   it('should display the correct label for each rating ID', () => {
     const { container } = render(<RatingSummary ratings={ratings} />);
-    const oneStarRatingLabel = getById(container, 'one-label');
-    const twoStarRatingLabel = getById(container, 'two-label');
-    const threeStarRatingLabel = getById(container, 'three-label');
-    const fourStarRatingLabel = getById(container, 'four-label');
-    const fiveStarRatingLabel = getById(container, 'five-label');
+    const oneStarRatingLabel = getById(container, '1-label');
+    const twoStarRatingLabel = getById(container, '2-label');
+    const threeStarRatingLabel = getById(container, '3-label');
+    const fourStarRatingLabel = getById(container, '4-label');
+    const fiveStarRatingLabel = getById(container, '5-label');
     expect(oneStarRatingLabel?.textContent).toEqual('1');
     expect(oneStarRatingLabel?.textContent).toEqual('1');
     expect(twoStarRatingLabel?.textContent).toEqual('2');
@@ -74,26 +74,26 @@ describe('RatingSummary', () => {
   it('should display the chart with correct width based on the number of ratings', () => {
     const { container } = render(<RatingSummary ratings={ratings} />);
 
-    const oneStarBar = getById(container, 'one-bar');
-    const twoStarBar = getById(container, 'two-bar');
-    const threeStarBar = getById(container, 'three-bar');
-    const fourStarBar = getById(container, 'four-bar');
-    const fiveStarBar = getById(container, 'five-bar');
+    const oneStarBar = getById(container, '1-bar');
+    const twoStarBar = getById(container, '2-bar');
+    const threeStarBar = getById(container, '3-bar');
+    const fourStarBar = getById(container, '4-bar');
+    const fiveStarBar = getById(container, '5-bar');
 
     expect(oneStarBar.style._values.width).toBe(
-      `${(ratings.one / total) * 100}%`
+      `${(ratings[1] / total) * 100}%`
     );
     expect(twoStarBar.style._values.width).toBe(
-      `${(ratings.two / total) * 100}%`
+      `${(ratings[2] / total) * 100}%`
     );
     expect(threeStarBar.style._values.width).toBe(
-      `${(ratings.three / total) * 100}%`
+      `${(ratings[3] / total) * 100}%`
     );
     expect(fourStarBar.style._values.width).toBe(
-      `${(ratings.four / total) * 100}%`
+      `${(ratings[4] / total) * 100}%`
     );
     expect(fiveStarBar.style._values.width).toBe(
-      `${(ratings.five / total) * 100}%`
+      `${(ratings[5] / total) * 100}%`
     );
   });
 });
