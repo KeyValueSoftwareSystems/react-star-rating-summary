@@ -61,19 +61,19 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
       },
-      { 
+      {
         test: /\.scss$/,
         use: ['style-loader', 'css-loader', 'sass-loader']
       },
       {
         test: /\.svg$/,
-        use: 'file-loader'
+        use: 'url-loader'
       }
     ]
   },
   plugins: [
     new MiniCssExtractPlugin({
-        filename: 'css/index.css'
+      filename: 'css/index.css'
     }),
     new webpack.BannerPlugin(banner)
   ],
