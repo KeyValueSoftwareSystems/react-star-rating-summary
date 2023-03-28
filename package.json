@@ -1,6 +1,6 @@
 {
   "name": "@keyvaluesystems/react-star-rating-summary",
-  "version": "0.1.3",
+  "version": "0.0.1",
   "description": "A ready to use rating summary component",
   "main": "build/index.js",
   "source": "src/index.tsx",
