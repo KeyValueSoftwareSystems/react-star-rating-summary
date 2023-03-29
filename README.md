@@ -72,7 +72,7 @@ Props that can be passed to the component are listed below:
 			<td><code>undefined</code></td>
 		</tr>
 		<tr>
-			<td><code><b>renderLabel?:</b> (ratingId: number): ReactElement</code></td>
+			<td><code><b>renderLabel?:</b> (ratingId: string): ReactElement</code></td>
 			<td>A render function to customize your ratings label with your own element.</td>
 			<td><code>undefined</code></td>
 		</tr>
@@ -86,9 +86,15 @@ Props that can be passed to the component are listed below:
 			<td>Boolean to enable and disable showing animations and transitions on the chart.</td>
 			<td><code>true</code></td>
 		</tr>
+		<tr>
 			<td><code><b>styles?:</b> object</code></td>
 			<td>Provides you with a bunch of callback functions to override the default styles.(refer 
 			<a href="#style-customizations">Style Customizations</a>)
+			<td><code>undefined</code></td>
+		</tr>
+		<tr>
+			<td><code><b>onChartClick?:</b> (ratingId: string): void</code></td>
+			<td>Click handler for each ratings chart</td>
 			<td><code>undefined</code></td>
 		</tr>
 	</tbody>

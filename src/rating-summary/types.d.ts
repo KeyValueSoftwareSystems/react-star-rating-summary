@@ -8,6 +8,7 @@ export type ISummaryProp = {
   showAnimation?: boolean;
   styles?: { [value in Elements]: IStyleFunction };
   chartColors?: { [value in RatingValue]: string };
+  onChartClick?: (ratingId: string) => void;
 };
 
 export type IRatings = {

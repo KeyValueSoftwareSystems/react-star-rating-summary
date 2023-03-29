@@ -13,7 +13,8 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
     showCount = true,
     showAnimation = true,
     styles = {},
-    chartColors
+    chartColors,
+    onChartClick
   } = props;
 
   const totalRatingCount = useMemo(
@@ -41,8 +42,11 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
             )}
             <div
               style={{ width: `${getBarWidth(Number(ratingId)) * 100}%` }}
-              className={classes.barWrapper}
+              className={`${classes.barWrapper}
+              ${showAnimation && classes.transitions}
+              ${onChartClick && classes.cursorPointer}`}
               id={`${ratingId}-bar`}
+              onClick={(): void => onChartClick && onChartClick(ratingId)}
             >
               <div
                 style={{
@@ -57,8 +61,7 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
                     {}),
                   ...getStyles(Elements.Chart, Number(ratingId))
                 }}
-                className={`${classes.barContainer}
-              ${showAnimation && classes.transitions}`}
+                className={`${classes.barContainer} ${showAnimation && classes.animations}`}
               >
                 {showCount && (
                   <span

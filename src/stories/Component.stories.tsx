@@ -23,7 +23,7 @@ RatingSummary.args = {
     3: 141135,
     2: 57472,
     1: 134055
-  }
+  },
   // renderLabel: (ratingId: string) => ((ratingId === '1' && (<>now</>) || <>{ratingId}</>)),
   // showCount: true,
   // showAnimation: true,
@@ -37,4 +37,7 @@ RatingSummary.args = {
   //   2: 'blue',
   //   1: 'green'
   // },
+  onBarClick: (ratingId: string) => {
+    console.log("🚀 ~ ratingId:", ratingId)
+  }
 };

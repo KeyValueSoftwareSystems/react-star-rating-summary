@@ -35,13 +35,18 @@
           padding-left: 8px;
         }
       }
-      .transitions {
-        animation-name: widthAnimation;
-        animation-duration: 300ms;
-        animation-timing-function: ease-in-out;
-        animation-iteration-count: 1;
-        transition: width 0.3s ease-in-out;
-      }
+    }
+    .transitions {
+      transition: width 0.3s ease-in-out;
+    }
+    .animations {
+      animation-name: widthAnimation;
+      animation-duration: 300ms;
+      animation-timing-function: ease-in-out;
+      animation-iteration-count: 1;
+    }
+    .cursorPointer {
+      cursor: pointer;
     }
     .five {
       background-color: #9fc05a;
