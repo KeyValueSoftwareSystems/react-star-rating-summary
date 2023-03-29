@@ -24,10 +24,10 @@ You’ll need to install React separately since it isn't included in the package
 React Star Rating Summary can be directly used in your project  by just providing the `ratings`  props like this:
 
 ```jsx
-import  React, { useState } from  'react';
-import  RatingSummary  from  '@keyvaluesystems/react-star-rating-summary';
+import React, { useState } from 'react';
+import RatingSummary from '@keyvaluesystems/react-star-rating-summary';
 
-function  App() {
+function App() {
   const ratingsVal = {
     5: 100,
     4: 200,
@@ -42,7 +42,7 @@ function  App() {
   );
 };
 
-export  default  App;
+export default App;
 ```
 The `ratings` prop expects an object with star rating number as key (can be 1, 2, 3, 4 and 5) and count of the respective ratings as the value.
 
@@ -87,27 +87,29 @@ Props that can be passed to the component are listed below:
 			<td><code>true</code></td>
 		</tr>
 			<td><code><b>styles?:</b> object</code></td>
-			<td>Provides you with a bunch of callback functions to override the default styles.(refer [Style Customizations](<#style-customizations>).</td>
+			<td>Provides you with a bunch of callback functions to override the default styles.(refer 
+			<a href="#style-customizations">Style Customizations</a>)
 			<td><code>undefined</code></td>
 		</tr>
 	</tbody>
 </table>
 
-  >Note:  The numbers from 1 to 5 are only taken as `ratingIds`
+>Note: The numbers from 1 to 5 are only taken as `ratingIds`
 
+<a name="style-customizations"></a>
 ## Style Customizations
 
-  Basic customization like changing the chart color for each ratings can be done using the `chartColors` prop:
+Basic customization like changing the chart color for each ratings can be done using the `chartColors` prop:
 
 ```jsx
   <RatingSummary
     ratings={ratingsVal}
     chartColors={{
-      5:  '#000',
-      4:  'yellow',
-      3:  'orange',
-      2:  'blue',
-      1:  'green'
+      5: '#000',
+      4: 'yellow',
+      3: 'orange',
+      2: 'blue',
+      1: 'green'
     }}
   />
 ```
@@ -115,11 +117,11 @@ Further customizations can by done by overriding default styles using the `style
 the below code shows all the overridable styles:
 
 ```jsx
-import  React  from  'react';
-import  RatingSummary  from  '@keyvaluesystems/react-star-rating-summary';
+import React from 'react';
+import RatingSummary from '@keyvaluesystems/react-star-rating-summary';
 
-function  App() {
-  const  stylesOverride = {
+function App() {
+  const stylesOverride = {
     Chart: (ratingId) => ({...styles}),
     Count: (ratingId) => ({...styles})
   };
@@ -131,9 +133,11 @@ function  App() {
   );
 }
 
-export  default  App;
+export default App;
 ```
--  `Chart` - overrides the Chart style for each rating.
--  `Count` - overrides the rating count style for each rating.
+- `Chart` - overrides the Chart style for each rating.
+- `Count` - overrides the rating count style for each rating.
 
 >Note: if you provides both `chartColors` prop and overrides `Chart` styles using `styles` prop, the customizations via `styles` prop are given more priority.
+
+
