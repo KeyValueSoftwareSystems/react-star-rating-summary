@@ -1,10 +1,10 @@
-import React, { FC, useMemo } from 'react';
-import { ISummaryProp } from './types';
-import classes from './styles.module.scss';
-import RatingLabel from '../rating-label';
+import React, { FC } from 'react';
 
-import { defaultChartColors, Elements, RatingValue } from '../constants';
-import { formatToNumberWithCommas } from '../utils';
+import { ISummaryProp } from './types';
+import RatingLabel from '../rating-label';
+import RatingDistributionItem from '../rating-distribution-item';
+import { RatingValue } from '../constants';
+import classes from './styles.module.scss';
 
 const RatingSummary: FC<ISummaryProp> = (props) => {
   const {
@@ -17,19 +17,9 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
     onChartClick
   } = props;
 
-  const totalRatingCount = useMemo(
-    (): number => Object.values(ratings).reduce((sum, num) => sum + (num || 0)),
-    [ratings]
+  const totalRatingCount = Object.values(ratings).reduce(
+    (sum, num) => sum + (num || 0)
   );
-
-  const getBarWidth = (ratingId: RatingValue): number =>
-    (ratings[ratingId] || 0) / totalRatingCount;
-
-  const getStyles = (element: Elements, ratingId: RatingValue): object => {
-    const getElementStyle = styles[element];
-    if (getElementStyle) return getElementStyle(ratingId);
-    return {};
-  };
 
   return (
     <div className={classes.ratingsWrapper} id="ratings-container">
@@ -40,40 +30,16 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
             {(renderLabel && <>{renderLabel(ratingId)}</>) || (
               <RatingLabel ratingId={ratingId} />
             )}
-            <div
-              style={{ width: `${getBarWidth(Number(ratingId)) * 100}%` }}
-              className={`${classes.barWrapper}
-              ${showAnimation && classes.transitions}
-              ${onChartClick && classes.cursorPointer}`}
-              id={`${ratingId}-bar`}
-              onClick={(): void => onChartClick && onChartClick(ratingId)}
-            >
-              <div
-                style={{
-                  ...((defaultChartColors[ratingId] && {
-                    backgroundColor: defaultChartColors[ratingId]
-                  }) ||
-                    {}),
-                  ...((chartColors &&
-                    chartColors[ratingId] && {
-                    backgroundColor: chartColors[ratingId]
-                  }) ||
-                    {}),
-                  ...getStyles(Elements.Chart, Number(ratingId))
-                }}
-                className={`${classes.barContainer} ${showAnimation && classes.animations}`}
-              >
-                {showCount && (
-                  <span
-                    className={classes.countContainer}
-                    style={{ ...getStyles(Elements.Count, Number(ratingId)) }}
-                    id={`${ratingId}-count`}
-                  >
-                    {formatToNumberWithCommas(ratings[ratingId])}
-                  </span>
-                )}
-              </div>
-            </div>
+            <RatingDistributionItem
+              currentRatingId={ratingId as unknown as RatingValue}
+              currentRatingValue={ratings[ratingId]}
+              totalRatingCount={totalRatingCount}
+              showCount={showCount}
+              showAnimation={showAnimation}
+              styles={styles}
+              chartColors={chartColors}
+              onChartClick={onChartClick}
+            />
           </div>
         ))}
     </div>

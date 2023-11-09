@@ -12,7 +12,7 @@ export enum Elements {
 }
 export const COMMA_SEPARATED_NUMBER_REGEX = /\B(?=(\d{3})+(?!\d))/g;
 
-export const defaultChartColors = {
+export const DEFAULT_CHART_COLORS = {
   1: '#ff8b5a',
   2: '#ffb337',
   3: '#ffd834',

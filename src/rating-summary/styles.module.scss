@@ -1,11 +1,3 @@
-@keyframes widthAnimation {
-  from {
-    width: 0px;
-  }
-  to {
-    width: 100%;
-  }
-}
 .ratingsWrapper {
   display: flex;
   flex-direction: column;
@@ -14,54 +6,10 @@
   width: 100%;
   row-gap: 2px;
   font-family: inherit;
-  .ratingWrapper {
-    display: flex;
-    align-items: center;
-    column-gap: 8px;
-    width: 100%;
-    .barWrapper {
-      max-width: 100%;
-      .barContainer {
-        height: 20px;
-        overflow-x: visible;
-        display: flex;
-        align-items: center;
-        width: 100%;
-        .countContainer {
-          font-size: 11px;
-          line-height: 17px;
-          background-color: transparent;
-          color: #282b0b;;
-          padding-left: 8px;
-        }
-      }
-    }
-    .transitions {
-      transition: width 0.3s ease-in-out;
-    }
-    .animations {
-      animation-name: widthAnimation;
-      animation-duration: 300ms;
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: 1;
-    }
-    .cursorPointer {
-      cursor: pointer;
-    }
-    .five {
-      background-color: #9fc05a;
-    }
-    .four {
-      background-color: #add633;
-    }
-    .three {
-      background-color: #ffd834;
-    }
-    .two {
-      background-color: #ffb337;
-    }
-    .one {
-      background-color: #ff8b5a;
-    }
-  }
+}
+.ratingWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 8px;
+  width: 100%;
 }
