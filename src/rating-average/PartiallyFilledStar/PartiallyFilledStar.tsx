@@ -3,12 +3,12 @@ import React, { FC } from 'react';
 import { PartiallyFilledStarProp } from './types';
 
 const PartiallyFilledStar: FC<PartiallyFilledStarProp> = (props) => {
-  const { fillColor, bgColor, colorFilledFraction = 50, width, height } = props;
+  const { fillColor, bgColor, colorFilledFraction = 50 } = props;
 
   return (
     <svg
-      width={width}
-      height={height}
+      width="100%"
+      height="auto"
       viewBox="0 0 32 32"
       xmlns="http://www.w3.org/2000/svg"
     >

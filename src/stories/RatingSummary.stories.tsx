@@ -76,8 +76,16 @@ export const VariantWithCustomStyle = Template.bind({});
 VariantWithCustomStyle.args = {
   ...Default.args,
   styles: {
-    Root: { padding: '20px' },
+    Root: { padding: '20px', fontSize: '14px' },
     Average: { color: 'purple' },
+    AverageStarIcon: {
+      width: '20px',
+      height: '20px'
+    },
+    LabelStarIcon: () => ({
+      width: '15px',
+      height: '15px'
+    }),
     Label: () => ({ fontSize: '12px' }),
     Count: (ratingId: number) =>
       REVIEW_COUNT_COLOR[ratingId] && { color: REVIEW_COUNT_COLOR[ratingId] },

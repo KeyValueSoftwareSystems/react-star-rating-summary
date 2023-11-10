@@ -19,8 +19,6 @@ export type CustomStyles = GenericCustomStyles | SpecificCustomStyles;
 export type ChartColors = { [value in RatingValue]: string };
 
 export interface RatingAverageIconProps {
-  width?: string;
-  height?: string;
   fillColor?: string;
   bgColor?: string;
 }

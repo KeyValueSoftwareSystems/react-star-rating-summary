@@ -19,10 +19,11 @@ const RatingLabel: FC<IRatingLabelProp> = (props) => {
     >
       <img
         className={classes.starImage}
+        style={{
+          ...getStyles(styles, Elements.LabelStarIcon, Number(ratingId))
+        }}
         src={starImg}
         alt=""
-        width="10"
-        height="10"
       />
       {ratingId}
     </div>

@@ -12,13 +12,15 @@ export enum GenericElements {
   AverageContainer = 'AverageContainer',
   Average = 'Average',
   AverageIconsWrapper = 'AverageIconsWrapper',
+  AverageStarIcon = 'AverageStarIcon',
   AverageSubText = 'AverageSubText'
 }
 
 export enum Elements {
   Chart = 'Chart',
   Count = 'Count',
-  Label = 'Label'
+  Label = 'Label',
+  LabelStarIcon = 'LabelStarIcon'
 }
 export const COMMA_SEPARATED_NUMBER_REGEX = /\B(?=(\d{3})+(?!\d))/g;
 
@@ -32,8 +34,6 @@ export const DEFAULT_CHART_COLORS = {
 
 export const RATING_AVERAGE_DEFAULTS = {
   icon: {
-    width: '14px',
-    height: '14px',
     fillColor: '#919191',
     bgColor: '#F2F2F2'
   }
