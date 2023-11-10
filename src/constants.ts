@@ -19,3 +19,12 @@ export const DEFAULT_CHART_COLORS = {
   4: '#add633',
   5: '#9fc05a'
 };
+
+export const RATING_AVERAGE_DEFAULTS = {
+  icon: {
+    width: '14px',
+    height: '14px',
+    fillColor: '#919191',
+    bgColor: '#F2F2F2'
+  }
+};

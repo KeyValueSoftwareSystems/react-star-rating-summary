@@ -7,7 +7,13 @@ const RatingLabel: FC<IRatingLabelProp> = (props) => {
   const { ratingId } = props;
   return (
     <div className={classes.label} id={`${ratingId}-label`}>
-      <img className={classes.starImage} src={starImg} alt="" width="10" height="10" />
+      <img
+        className={classes.starImage}
+        src={starImg}
+        alt=""
+        width="10"
+        height="10"
+      />
       {ratingId}
     </div>
   );
