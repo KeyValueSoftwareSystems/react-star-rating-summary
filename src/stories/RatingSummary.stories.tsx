@@ -76,6 +76,9 @@ export const VariantWithCustomStyle = Template.bind({});
 VariantWithCustomStyle.args = {
   ...Default.args,
   styles: {
+    Root: { padding: '20px' },
+    Average: { color: 'purple' },
+    Label: () => ({ fontSize: '12px' }),
     Count: (ratingId: number) =>
       REVIEW_COUNT_COLOR[ratingId] && { color: REVIEW_COUNT_COLOR[ratingId] },
     Chart: () => ({ borderRadius: 10 })

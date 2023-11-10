@@ -9,7 +9,7 @@ import {
 import { IRatingAverageProp } from './types';
 import starImg from '../assets/star-grey.svg';
 import PartiallyFilledStar from './PartiallyFilledStar';
-import { RATING_AVERAGE_DEFAULTS } from '../constants';
+import { GenericElements, RATING_AVERAGE_DEFAULTS } from '../constants';
 import classes from './styles.module.scss';
 
 const { icon } = RATING_AVERAGE_DEFAULTS;
@@ -19,7 +19,8 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
     ratings,
     customAverageFn,
     averageRatingPrecision = 1,
-    iconProps
+    iconProps,
+    styles = {}
   } = props;
   const {
     width = icon.width,
@@ -44,11 +45,17 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
   const [noOfCompleteStars, visibleStarFraction] = extractStarInfo(average);
 
   return (
-    <div className={classes.container}>
-      <div className={classes.averageRatingValue}>
+    <div
+      className={classes.container}
+      style={{ ...styles[GenericElements.AverageContainer] }}
+    >
+      <div
+        className={classes.averageRatingValue}
+        style={{ ...styles[GenericElements.Average] }}
+      >
         {adjustDecimalPrecision(average, averageRatingPrecision)}
       </div>
-      <div className={classes.imgWrapper}>
+      <div style={{ ...styles[GenericElements.AverageIconsWrapper] }}>
         {Array(noOfCompleteStars)
           .fill(0)
           .map((_item, index) => (
@@ -69,7 +76,10 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
           colorFilledFraction={visibleStarFraction}
         />
       </div>
-      <div className={classes.subtext}>
+      <div
+        className={classes.subText}
+        style={{ ...styles[GenericElements.AverageSubText] }}
+      >
         {formatToNumberWithCommas(totalRatingCount)} reviews
       </div>
     </div>

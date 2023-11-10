@@ -6,9 +6,19 @@ export enum RatingValue {
   One = 1
 }
 
+export enum GenericElements {
+  Root = 'Root',
+  SummaryContainer = 'SummaryContainer',
+  AverageContainer = 'AverageContainer',
+  Average = 'Average',
+  AverageIconsWrapper = 'AverageIconsWrapper',
+  AverageSubText = 'AverageSubText'
+}
+
 export enum Elements {
   Chart = 'Chart',
-  Count = 'Count'
+  Count = 'Count',
+  Label = 'Label'
 }
 export const COMMA_SEPARATED_NUMBER_REGEX = /\B(?=(\d{3})+(?!\d))/g;
 

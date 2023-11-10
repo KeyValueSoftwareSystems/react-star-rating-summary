@@ -1,8 +1,20 @@
 import { ReactElement } from 'react';
 
-import { RatingValue, Elements } from '../constants';
+import { RatingValue, Elements, GenericElements } from '../constants';
 
-export type CustomStyles = { [value in Elements]?: IStyleFunction };
+export type StyleObjectType = React.CSSProperties;
+
+export type IStyleFunction = (ratingId: RatingValue) => React.CSSProperties;
+
+type GenericCustomStyles = {
+  [value in GenericElements]?: StyleObjectType;
+};
+
+type SpecificCustomStyles = {
+  [value in Elements]?: IStyleFunction;
+};
+
+export type CustomStyles = GenericCustomStyles | SpecificCustomStyles;
 
 export type ChartColors = { [value in RatingValue]: string };
 
@@ -30,5 +42,3 @@ export type ISummaryProp = {
 export type IRatings = {
   [value in RatingValue]: number;
 };
-
-export type IStyleFunction = (ratingId: RatingValue) => object;
