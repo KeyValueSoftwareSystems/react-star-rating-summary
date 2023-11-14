@@ -31,6 +31,8 @@ export interface RatingAverageIconProps {
   bgColor?: string;
 }
 
+export type CustomAverageFn = (ratings: IRatings, ranks: RatingRanks) => number;
+
 export type ISummaryProp = {
   ratings: IRatings;
   ratingRanks?: RatingRanks;
@@ -41,7 +43,7 @@ export type ISummaryProp = {
   chartColors?: ChartColors;
   onChartClick?: (ratingId: keyof IRatings) => void;
   showAverageRating?: boolean;
-  customAverageFn?: (ratings: IRatings) => number;
+  customAverageFn?: CustomAverageFn;
   averageRatingPrecision?: number;
   ratingAverageIconProps?: RatingAverageIconProps;
   thousandsSeparator?: string;

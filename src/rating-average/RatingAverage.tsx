@@ -19,11 +19,11 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
     ratings,
     ranks = {},
     customAverageFn = getWeightedAverage,
-    averageRatingPrecision = 1,
+    averageRatingPrecision,
     iconProps,
     styles = {},
     thousandsSeparator,
-    ratingAverageSubText = 'reviews'
+    ratingAverageSubText
   } = props;
   const { fillColor = icon.fillColor, bgColor = icon.bgColor } =
     iconProps || {};
@@ -60,16 +60,22 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
         {Array(noOfCompleteStars)
           .fill(0)
           .map((_item, index) => (
-            <img
-              key={index}
+            <div
+              key={`completely-filled-star-${index}`}
               className={classes.starImage}
               style={{ ...styles[GenericElements.AverageStarIcon] }}
-              src={starImg}
-              alt=""
-            />
+            >
+              <PartiallyFilledStar
+                fillColor={fillColor}
+                bgColor={bgColor}
+                colorFilledFraction={1}
+                id={`completely-filled-star-${index}`}
+              />
+            </div>
           ))}
         {Boolean(visibleStarFraction) && (
           <div
+            key="fraction-filled-star"
             className={classes.starImage}
             style={{ ...styles[GenericElements.AverageStarIcon] }}
           >

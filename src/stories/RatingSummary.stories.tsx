@@ -97,12 +97,37 @@ VariantWithCustomStyle.args = {
   }
 };
 
-export const VariantWithCustomRanks = Template.bind({});
-VariantWithCustomRanks.args = {
+export const VariantWithStringBasedRatings = Template.bind({});
+VariantWithStringBasedRatings.args = {
   ...Default.args,
   ratings: {
     good: 200,
     bad: 200,
     excellent: 200
   }
+};
+
+export const VariantWithCustomRanks = Template.bind({});
+VariantWithCustomRanks.args = {
+  ...Default.args,
+  ratings: {
+    good: 200,
+    okay: 500,
+    poor: 100,
+    excellent: 300,
+    great: 700
+  },
+  ratingRanks: {
+    good: 3,
+    okay: 2,
+    poor: 1,
+    excellent: 5,
+    great: 4
+  },
+  averageRatingPrecision: 2,
+  ratingAverageIconProps: {
+    fillColor: 'green',
+    bgColor: 'red'
+  },
+  ratingAverageSubText: 'total'
 };

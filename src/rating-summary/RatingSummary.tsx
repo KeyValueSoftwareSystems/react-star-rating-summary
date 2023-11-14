@@ -20,10 +20,10 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
     onChartClick,
     showAverageRating = true,
     customAverageFn,
-    averageRatingPrecision,
+    averageRatingPrecision = 1,
     ratingAverageIconProps = {},
     thousandsSeparator,
-    ratingAverageSubText
+    ratingAverageSubText = 'reviews'
   } = props;
 
   const getRatingRanks = (): RatingRanks => {

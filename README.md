@@ -88,7 +88,7 @@ Props that can be passed to the component are listed below:
 		</tr>
 		<tr>
 			<td><code><b>styles?:</b> object</code></td>
-			<td>Provides you with a bunch of callback functions to override the default styles.(refer 
+			<td>Provides you with a bunch of style objects and callback functions to override the default styles.(refer 
 			<a href="#style-customizations">Style Customizations</a>)
 			<td><code>undefined</code></td>
 		</tr>
@@ -97,10 +97,45 @@ Props that can be passed to the component are listed below:
 			<td>Click handler for each ratings chart</td>
 			<td><code>undefined</code></td>
 		</tr>
+		<tr>
+			<td><code><b>ratingRanks?:</b> object</code></td>
+			<td>An object with ratingIds as key and their respective weightage in number as value, used to compute average of ratings.</td>
+			<td><code>undefined</code></td>
+		</tr>
+		<tr>
+			<td><code><b>showAverageRating?:</b> boolean</code></td>
+			<td>Boolean to enable and disable showing average rating section.</td>
+			<td><code>true</code></td>
+		</tr>
+		<tr>
+			<td><code><b>customAverageFn?:</b> (ratings: object, ranks: object) => number</code></td>
+			<td>A function that allows customization of the average computation for ratings, in order to override the default behavior.</td>
+			<td><code>undefined</code></td>
+		</tr>
+		<tr>
+			<td><code><b>averageRatingPrecision?:</b> number</code></td>
+			<td>Determines the number of decimal places for displaying the average of ratings.</td>
+			<td><code>1</code></td>
+		</tr>
+		<tr>
+			<td><code><b>ratingAverageIconProps?:</b> object</code></td>
+			<td>An object defining the fill color and background color for customizing the appearance of star icon in the average rating section.</td>
+			<td><code>undefined</code></td>
+		</tr>
+		<tr>
+			<td><code><b>thousandsSeparator?:</b> string</code></td>
+			<td>A string specifying the custom thousands separator for formatting a numerical value.</td>
+			<td><code>','</code></td>
+		</tr>
+		<tr>
+			<td><code><b>ratingAverageSubText?:</b> string</code></td>
+			<td>A string used to customize the text accompanying the star rating average which provides additional information about the total number of reviews.</td>
+			<td><code>'reviews'</code></td>
+		</tr>
 	</tbody>
 </table>
 
->Note: The numbers from 1 to 5 are only taken as `ratingIds`
+>Note: The numbers from 1 to 5 are the ideal values for `ratingIds`
 
 <a name="style-customizations"></a>
 ## Style Customizations
@@ -109,7 +144,7 @@ Basic customization like changing the chart color for each ratings can be done u
 
 ```jsx
   <RatingSummary
-    ratings={ratingsVal}
+    ratings={ratings}
     chartColors={{
       5: '#000',
       4: 'yellow',
@@ -127,13 +162,39 @@ import React from 'react';
 import RatingSummary from '@keyvaluesystems/react-star-rating-summary';
 
 function App() {
+
+  const ratings = {
+		1: 100,
+		2: 200,
+		3: 300,
+		4: 400,
+		5: 500
+	};
+
+	const countColors = {
+		1: 'red',
+		2: 'yellow',
+		3: 'blue',
+		4: 'orange',
+		5: 'white'
+	};
+
   const stylesOverride = {
-    Chart: (ratingId) => ({...styles}),
-    Count: (ratingId) => ({...styles})
+    Average: { color: 'purple' },
+    AverageStarIcon: {
+      width: '20px',
+      height: '20px'
+    },
+    LabelStarIcon: () => ({
+      width: '15px',
+      height: '15px'
+    }),
+    Label: (ratingId) => ({ fontSize: '12px' }),
+    Count: (ratingId) => ({color: countColors[ratingId]})
   };
   return (
     <RatingSummary
-      ratings={ratingsVal}
+      ratings={ratings}
       styles={stylesOverride}
     />
   );
@@ -141,9 +202,75 @@ function App() {
 
 export default App;
 ```
+- `Root` - overrides the style of outermost container.
+- `SummaryContainer` - overrides the style of summary container.
+- `AverageContainer` - overrides the style of average section.
+- `Average` - overrides the style of average value.
+- `AverageIconsWrapper` - overrides the style of icons container in the average section.
+- `AverageStarIcon` - overrides the style of every individual star icon in the average section
+- `AverageSubTextContainer` - overrides the style of sub-text container in the average section.
+- `AverageTotalReviews` - overrides the style of total no. of review's value in the average section.
+- `AverageSubText` - overrides the style of the sub-text adjacent to total no. of review in the average section.
+  Label = 'Label',
+  LabelStarIcon = 'LabelStarIcon'
+- `Label` - overrides the Label container style for each rating.
+- `LabelStarIcon` - overrides the style of the star icon in the label of each rating.
 - `Chart` - overrides the Chart style for each rating.
 - `Count` - overrides the rating count style for each rating.
 
 >Note: if you provides both `chartColors` prop and overrides `Chart` styles using `styles` prop, the customizations via `styles` prop are given more priority.
 
+Example with the usage other props
+```jsx
+import React from 'react';
+import RatingSummary from '@keyvaluesystems/react-star-rating-summary';
 
+function App() {
+
+  const ratings = {
+		1: 100,
+		2: 200,
+		3: 300,
+		4: 400,
+		5: 500
+	};
+
+	const countColors = {
+		1: 'red',
+		2: 'yellow',
+		3: 'blue',
+		4: 'orange',
+		5: 'white'
+	};
+
+  const stylesOverride = {
+    Average: { color: 'purple' },
+    AverageStarIcon: {
+      width: '20px',
+      height: '20px'
+    },
+    LabelStarIcon: () => ({
+      width: '15px',
+      height: '15px'
+    }),
+    Label: (ratingId) => ({ fontSize: '12px' }),
+    Count: (ratingId) => ({color: countColors[ratingId]})
+  };
+  return (
+    <RatingSummary
+      ratings={ratings}
+      renderLabel={(ratingId) => ratingId}
+			showAnimation={false}
+			showCount={false}
+			averageRatingPrecision={2}
+			ratingAverageIconProps={{
+				  fillColor: 'green',
+          bgColor: 'red'
+			}}
+			ratingAverageSubText="total"
+    />
+  );
+}
+
+export default App;
+```
