@@ -1,13 +1,17 @@
 import {
   CustomStyles,
   IRatings,
-  RatingAverageIconProps
+  RatingAverageIconProps,
+  RatingRanks
 } from '../rating-summary/types';
 
 export interface IRatingAverageProp {
   ratings: IRatings;
-  customAverageFn?: (ratings: IRatings) => number;
+  ranks?: RatingRanks;
+  customAverageFn?: (ratings: IRatings, ranks: RatingRanks) => number;
   averageRatingPrecision?: number;
   iconProps?: RatingAverageIconProps;
   styles?: CustomStyles;
+  thousandsSeparator?: string;
+  ratingAverageSubText?: string;
 }

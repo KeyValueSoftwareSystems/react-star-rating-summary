@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { IRatingDistributionProp } from './types';
 import { DEFAULT_CHART_COLORS, Elements } from '../constants';
-import { formatToNumberWithCommas, getStyles } from '../utils';
+import { formatNumber, getStyles, isValidNumber } from '../utils';
 import classes from './styles.module.scss';
 
 const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
@@ -14,11 +14,21 @@ const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
     showAnimation,
     styles = {},
     chartColors,
-    onChartClick
+    onChartClick,
+    thousandsSeparator
   } = props;
 
   // bar-width in percentage
   const barWidth = ((currentRatingValue || 0) / totalRatingCount) * 100;
+
+  const getBgChartColor = (): string => {
+    if (chartColors?.[currentRatingId]) return chartColors[currentRatingId];
+
+    return isValidNumber(currentRatingId) &&
+      DEFAULT_CHART_COLORS[Number(currentRatingId)]
+      ? DEFAULT_CHART_COLORS[Number(currentRatingId)]
+      : DEFAULT_CHART_COLORS[1];
+  };
 
   return (
     <div
@@ -34,16 +44,8 @@ const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
     >
       <div
         style={{
-          ...((DEFAULT_CHART_COLORS[currentRatingId] && {
-            backgroundColor: DEFAULT_CHART_COLORS[currentRatingId]
-          }) ||
-            {}),
-          ...((chartColors &&
-            chartColors[currentRatingId] && {
-              backgroundColor: chartColors[currentRatingId]
-            }) ||
-            {}),
-          ...getStyles(styles, Elements.Chart, Number(currentRatingId))
+          backgroundColor: getBgChartColor(),
+          ...getStyles(styles, Elements.Chart, currentRatingId)
         }}
         className={`${classes.barContainer} ${
           showAnimation && classes.animations
@@ -53,11 +55,11 @@ const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
           <span
             className={classes.countContainer}
             style={{
-              ...getStyles(styles, Elements.Count, Number(currentRatingId))
+              ...getStyles(styles, Elements.Count, currentRatingId)
             }}
             id={`${currentRatingId}-count`}
           >
-            {formatToNumberWithCommas(currentRatingValue)}
+            {formatNumber(currentRatingValue, thousandsSeparator)}
           </span>
         )}
       </div>

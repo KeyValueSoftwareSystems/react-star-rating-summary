@@ -1,13 +1,13 @@
-import { RatingValue } from '../constants';
 import { ChartColors, CustomStyles, IRatings } from '../rating-summary/types';
 
 export interface IRatingDistributionProp {
-  currentRatingId: RatingValue;
+  currentRatingId: string;
   currentRatingValue: number;
   totalRatingCount: number;
   showCount?: boolean;
   showAnimation?: boolean;
   styles?: CustomStyles;
   chartColors?: ChartColors;
-  onChartClick?: (ratingId: RatingValue) => void;
+  onChartClick?: (ratingId: string) => void;
+  thousandsSeparator?: string;
 }

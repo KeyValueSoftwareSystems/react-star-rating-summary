@@ -1,11 +1,3 @@
-export enum RatingValue {
-  Five = 5,
-  Four = 4,
-  Three = 3,
-  Two = 2,
-  One = 1
-}
-
 export enum GenericElements {
   Root = 'Root',
   SummaryContainer = 'SummaryContainer',
@@ -13,6 +5,8 @@ export enum GenericElements {
   Average = 'Average',
   AverageIconsWrapper = 'AverageIconsWrapper',
   AverageStarIcon = 'AverageStarIcon',
+  AverageSubTextContainer = 'AverageSubTextContainer',
+  AverageTotalReviews = 'AverageTotalReviews',
   AverageSubText = 'AverageSubText'
 }
 
@@ -22,7 +16,7 @@ export enum Elements {
   Label = 'Label',
   LabelStarIcon = 'LabelStarIcon'
 }
-export const COMMA_SEPARATED_NUMBER_REGEX = /\B(?=(\d{3})+(?!\d))/g;
+export const INTERNATIONAL_NUMBER_SYSTEM_REGEX = /\B(?=(\d{3})+(?!\d))/g;
 
 export const DEFAULT_CHART_COLORS = {
   1: '#ff8b5a',

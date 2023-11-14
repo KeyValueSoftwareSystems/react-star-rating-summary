@@ -1,16 +1,17 @@
 import React, { FC } from 'react';
 
-import { ISummaryProp } from './types';
+import { ISummaryProp, RatingRanks } from './types';
 import RatingLabel from '../rating-label';
 import RatingDistributionItem from '../rating-distribution-item';
-import { GenericElements, RatingValue } from '../constants';
-import { getTotalRatingCount } from '../utils';
+import { GenericElements } from '../constants';
+import { getTotalRatingCount, isValidNumber } from '../utils';
 import RatingAverage from '../rating-average';
 import classes from './styles.module.scss';
 
 const RatingSummary: FC<ISummaryProp> = (props) => {
   const {
     ratings,
+    ratingRanks = {},
     renderLabel,
     showCount = true,
     showAnimation = true,
@@ -20,8 +21,23 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
     showAverageRating = true,
     customAverageFn,
     averageRatingPrecision,
-    ratingAverageIconProps = {}
+    ratingAverageIconProps = {},
+    thousandsSeparator,
+    ratingAverageSubText
   } = props;
+
+  const getRatingRanks = (): RatingRanks => {
+    if (Object.keys(ratingRanks).length) return { ...ratingRanks };
+    return Object.keys(ratings).reduce(
+      (accumulator, ratingId, index) => ({
+        ...accumulator,
+        [ratingId]: isValidNumber(ratingId) ? Number(ratingId) : index + 1
+      }),
+      {}
+    );
+  };
+
+  const ranks: RatingRanks = getRatingRanks();
 
   return (
     <div
@@ -31,10 +47,13 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
       {showAverageRating && (
         <RatingAverage
           ratings={ratings}
+          ranks={ranks}
           customAverageFn={customAverageFn}
           averageRatingPrecision={averageRatingPrecision}
           iconProps={ratingAverageIconProps}
           styles={styles}
+          thousandsSeparator={thousandsSeparator}
+          ratingAverageSubText={ratingAverageSubText}
         />
       )}
       <div
@@ -50,7 +69,7 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
                 <RatingLabel ratingId={ratingId} styles={styles} />
               )}
               <RatingDistributionItem
-                currentRatingId={ratingId as unknown as RatingValue}
+                currentRatingId={ratingId}
                 currentRatingValue={ratings[ratingId]}
                 totalRatingCount={getTotalRatingCount(ratings)}
                 showCount={showCount}
@@ -58,6 +77,7 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
                 styles={styles}
                 chartColors={chartColors}
                 onChartClick={onChartClick}
+                thousandsSeparator={thousandsSeparator}
               />
             </div>
           ))}

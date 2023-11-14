@@ -18,6 +18,10 @@ export default {
     showCount: {
       defaultValue: true,
       control: { type: 'boolean' }
+    },
+    thousandsSeparator: {
+      options: [',', '.'],
+      control: { type: 'select' }
     }
   }
 } as ComponentMeta<typeof Component>;
@@ -29,7 +33,7 @@ const Template: ComponentStory<typeof Component> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   ratings: {
-    5: 1148459,
+    5: 114845,
     4: 365957,
     3: 141135,
     2: 57472,
@@ -90,5 +94,15 @@ VariantWithCustomStyle.args = {
     Count: (ratingId: number) =>
       REVIEW_COUNT_COLOR[ratingId] && { color: REVIEW_COUNT_COLOR[ratingId] },
     Chart: () => ({ borderRadius: 10 })
+  }
+};
+
+export const VariantWithCustomRanks = Template.bind({});
+VariantWithCustomRanks.args = {
+  ...Default.args,
+  ratings: {
+    good: 200,
+    bad: 200,
+    excellent: 200
   }
 };
