@@ -43,6 +43,7 @@ const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
       })}
     >
       <div
+        id={`${currentRatingId}-inner-bar`}
         style={{
           backgroundColor: getBgChartColor(),
           ...getStyles(styles, Elements.Chart, currentRatingId)

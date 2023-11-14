@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { PartiallyFilledStarProp } from './types';
 
 const PartiallyFilledStar: FC<PartiallyFilledStarProp> = (props) => {
-  const { fillColor, bgColor, colorFilledFraction = 50, id } = props;
+  const { fillColor, bgColor, colorFilledFraction, id } = props;
 
   return (
     <svg

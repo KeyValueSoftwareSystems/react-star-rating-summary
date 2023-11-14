@@ -96,4 +96,93 @@ describe('RatingSummary', () => {
       `${(ratings[5] / total) * 100}%`
     );
   });
+
+  it('should be able to pass string based ratingIds', () => {
+    const stringBasedRatings = {
+      poor: 100,
+      okay: 100,
+      good: 100,
+      great: 100,
+      excellent: 100
+    };
+    const { container } = render(
+      <RatingSummary ratings={stringBasedRatings} />
+    );
+
+    const oneStarRatingLabel = getById(container, 'poor-label');
+    const twoStarRatingLabel = getById(container, 'okay-label');
+    const threeStarRatingLabel = getById(container, 'good-label');
+    const fourStarRatingLabel = getById(container, 'great-label');
+    const fiveStarRatingLabel = getById(container, 'excellent-label');
+    expect(oneStarRatingLabel?.textContent).toEqual('poor');
+    expect(twoStarRatingLabel?.textContent).toEqual('okay');
+    expect(threeStarRatingLabel?.textContent).toEqual('good');
+    expect(fourStarRatingLabel?.textContent).toEqual('great');
+    expect(fiveStarRatingLabel?.textContent).toEqual('excellent');
+  });
+
+  it('should be able to pass custom ranks', () => {
+    const ratings = {
+      poor: 100,
+      good: 200,
+      excellent: 300
+    };
+    const ratingRanks = {
+      poor: 1,
+      good: 2,
+      excellent: 3
+    };
+    const { container } = render(
+      <RatingSummary ratings={ratings} ratingRanks={ratingRanks} />
+    );
+
+    const oneStarRatingLabel = getById(container, 'poor-label');
+    const twoStarRatingLabel = getById(container, 'good-label');
+    const threeStarRatingLabel = getById(container, 'excellent-label');
+    expect(oneStarRatingLabel?.textContent).toEqual('poor');
+    expect(twoStarRatingLabel?.textContent).toEqual('good');
+    expect(threeStarRatingLabel?.textContent).toEqual('excellent');
+  });
+
+  it('should be able to pass custom styles', () => {
+    const sampleCustomStyle = {
+      SummaryContainer: { color: 'purple' },
+      Label: () => ({ fontSize: '10px' })
+    };
+    const { container } = render(
+      <RatingSummary ratings={ratings} styles={sampleCustomStyle} />
+    );
+
+    const summaryContainer = getById(container, 'ratings-container');
+    expect(summaryContainer).toHaveStyle('color: purple');
+
+    const oneStarLabel = getById(container, '1-label');
+    expect(oneStarLabel).toHaveStyle('font-size: 10px');
+  });
+
+  it('should be able to pass custom chart colors', () => {
+    const customChartColors = {
+      1: 'purple',
+      2: 'blue'
+    };
+    const { container } = render(
+      <RatingSummary ratings={ratings} chartColors={customChartColors} />
+    );
+
+    const oneStarRatingBar = getById(container, '1-inner-bar');
+    expect(oneStarRatingBar).toHaveStyle('background-color: purple');
+    const twoStarRatingBar = getById(container, '2-inner-bar');
+    expect(twoStarRatingBar).toHaveStyle('background-color: blue');
+  });
+
+  it('should be able to pass onChartClick handler', () => {
+    const onChartClick = jest.fn();
+    const { container } = render(
+      <RatingSummary ratings={ratings} onChartClick={onChartClick} />
+    );
+
+    const oneStarRatingBar = getById(container, '1-bar');
+    oneStarRatingBar.click();
+    expect(onChartClick).toHaveBeenCalled();
+  });
 });
