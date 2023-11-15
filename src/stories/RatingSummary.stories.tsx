@@ -103,7 +103,15 @@ VariantWithoutCount.args = {
 export const VariantWithCustomLabel = Template.bind({});
 VariantWithCustomLabel.args = {
   ...Default.args,
-  renderLabel: (ratingId: string) => ratingId
+  renderLabel: (ratingId: string) => (
+    <div
+      style={{
+        paddingRight: '8px'
+      }}
+    >
+      {ratingId}
+    </div>
+  )
 };
 
 const REVIEW_COUNT_COLOR = ['', 'white', 'black', 'red', 'blue', 'lightgreen'];

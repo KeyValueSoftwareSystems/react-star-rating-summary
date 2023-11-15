@@ -3,8 +3,8 @@ import React, { FC } from 'react';
 import { ISummaryProp, RatingRanks } from './types';
 import RatingLabel from '../rating-label';
 import RatingDistributionItem from '../rating-distribution-item';
-import { GenericElements } from '../constants';
-import { getTotalRatingCount } from '../utils';
+import { Elements, GenericElements } from '../constants';
+import { getStyles, getTotalRatingCount } from '../utils';
 import RatingAverage from '../rating-average';
 import classes from './styles.module.scss';
 
@@ -64,7 +64,13 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
         {Object.keys(ratings)
           .reverse()
           .map((ratingId) => (
-            <div key={ratingId} className={classes.ratingWrapper}>
+            <div
+              key={ratingId}
+              className={classes.ratingWrapper}
+              style={{
+                ...getStyles(styles, Elements.SummaryItemContainer, ratingId)
+              }}
+            >
               {(renderLabel && <>{renderLabel(ratingId)}</>) || (
                 <RatingLabel ratingId={ratingId} styles={styles} />
               )}

@@ -11,6 +11,7 @@ export enum GenericElements {
 }
 
 export enum Elements {
+  SummaryItemContainer = 'SummaryItemContainer',
   ChartContainer = 'ChartContainer',
   FilledChartContainer = 'FilledChartContainer',
   Chart = 'Chart',

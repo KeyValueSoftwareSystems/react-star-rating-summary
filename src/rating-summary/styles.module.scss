@@ -1,20 +1,20 @@
 .container {
   display: flex;
   align-items: center;
-  column-gap: 10px;
+  column-gap: 15px;
 }
 .ratingsWrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+  display: table;
+  border-spacing: 0 4px;
   width: 100%;
   row-gap: 4px;
   font-family: inherit;
 }
 .ratingWrapper {
-  display: flex;
-  align-items: center;
-  column-gap: 8px;
+  display: table-row;
   width: 100%;
+  padding-bottom: 4px;
+}
+.ratingWrapper:last-child {
+  padding-bottom: 0;
 }
