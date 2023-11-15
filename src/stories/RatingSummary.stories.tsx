@@ -79,6 +79,13 @@ const REVIEW_COUNT_COLOR = ['', 'white', 'black', 'red', 'blue', 'lightgreen'];
 export const VariantWithCustomStyle = Template.bind({});
 VariantWithCustomStyle.args = {
   ...Default.args,
+  ratings: {
+    100: 100,
+    200: 150,
+    300: 200,
+    400: 80,
+    500: 200
+  },
   styles: {
     Root: { padding: '20px', fontSize: '14px' },
     Average: { color: 'purple' },

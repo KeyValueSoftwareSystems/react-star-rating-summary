@@ -4,7 +4,7 @@ import { ISummaryProp, RatingRanks } from './types';
 import RatingLabel from '../rating-label';
 import RatingDistributionItem from '../rating-distribution-item';
 import { GenericElements } from '../constants';
-import { getTotalRatingCount, isValidNumber } from '../utils';
+import { getTotalRatingCount } from '../utils';
 import RatingAverage from '../rating-average';
 import classes from './styles.module.scss';
 
@@ -31,7 +31,7 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
     return Object.keys(ratings).reduce(
       (accumulator, ratingId, index) => ({
         ...accumulator,
-        [ratingId]: isValidNumber(ratingId) ? Number(ratingId) : index + 1
+        [ratingId]: index + 1
       }),
       {}
     );

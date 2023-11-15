@@ -135,8 +135,7 @@ Props that can be passed to the component are listed below:
 	</tbody>
 </table>
 
->Note: The numbers from 1 to 5 are the ideal values for `ratingIds`
-
+>Note: The numbers from 1 to 5 are the ideal values for `ratingIds`. RatingIds are considered as labels and a value of index + 1 is used when computing rating average if rank of each rating-id is not explicitly passed through ratingRanks prop.
 <a name="style-customizations"></a>
 ## Style Customizations
 

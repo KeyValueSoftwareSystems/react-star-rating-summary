@@ -7,7 +7,6 @@ import {
   getWeightedAverage
 } from '../utils';
 import { IRatingAverageProp } from './types';
-import starImg from '../assets/star-grey.svg';
 import PartiallyFilledStar from './PartiallyFilledStar';
 import { GenericElements, RATING_AVERAGE_DEFAULTS } from '../constants';
 import classes from './styles.module.scss';
