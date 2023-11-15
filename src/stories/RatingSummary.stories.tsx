@@ -59,6 +59,12 @@ VariantWithCustomBarColors.args = {
 export const VariantWithoutAnimations = Template.bind({});
 VariantWithoutAnimations.args = {
   ...Default.args,
+  ratings: {
+    10: 11,
+    27: 15,
+    42: 20,
+    55: 15
+  },
   showAnimation: false
 };
 
