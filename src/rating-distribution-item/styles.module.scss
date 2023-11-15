@@ -6,11 +6,13 @@
     width: 100%;
   }
 }
-
-.barWrapper {
+.barContainer {
+  width: 100%;
+}
+.filledBarContainer {
   max-width: 100%;
 }
-.barContainer {
+.filledBar {
   height: 24px;
   overflow-x: visible;
   display: flex;

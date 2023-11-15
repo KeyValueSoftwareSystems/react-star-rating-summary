@@ -44,6 +44,32 @@ Default.args = {
   }
 };
 
+export const DefaultFixedWidthContainer = Template.bind({});
+DefaultFixedWidthContainer.args = {
+  ratings: {
+    5: 400,
+    4: 300,
+    3: 350,
+    2: 200,
+    1: 250
+  },
+  styles: {
+    Root: {
+      width: '500px',
+      padding: '20px'
+    },
+    ChartContainer: () => ({
+      backgroundColor: '#F2F2F2',
+      borderRadius: '20px',
+      height: '20px'
+    }),
+    Chart: () => ({
+      borderRadius: '20px',
+      height: '20px'
+    })
+  }
+};
+
 export const VariantWithCustomBarColors = Template.bind({});
 VariantWithCustomBarColors.args = {
   ...Default.args,

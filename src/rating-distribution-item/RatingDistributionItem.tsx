@@ -32,37 +32,47 @@ const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
 
   return (
     <div
-      style={{ width: `${barWidth}%` }}
-      className={`${classes.barWrapper}
-              ${showAnimation && classes.transitions}
-              ${onChartClick && classes.cursorPointer}`}
-      id={`${currentRatingId}-bar`}
-      {...(onChartClick && {
-        role: 'presentation',
-        onClick: (): void => onChartClick(currentRatingId)
-      })}
+      className={classes.barContainer}
+      style={{
+        ...getStyles(styles, Elements.ChartContainer, currentRatingId)
+      }}
     >
       <div
-        id={`${currentRatingId}-inner-bar`}
         style={{
-          backgroundColor: getBgChartColor(),
-          ...getStyles(styles, Elements.Chart, currentRatingId)
+          width: `${barWidth}%`,
+          ...getStyles(styles, Elements.FilledChartContainer, currentRatingId)
         }}
-        className={`${classes.barContainer} ${
-          showAnimation && classes.animations
-        }`}
+        className={`${classes.filledBarContainer}
+              ${showAnimation && classes.transitions}
+              ${onChartClick && classes.cursorPointer}`}
+        id={`${currentRatingId}-bar`}
+        {...(onChartClick && {
+          role: 'presentation',
+          onClick: (): void => onChartClick(currentRatingId)
+        })}
       >
-        {showCount && (
-          <span
-            className={classes.countContainer}
-            style={{
-              ...getStyles(styles, Elements.Count, currentRatingId)
-            }}
-            id={`${currentRatingId}-count`}
-          >
-            {formatNumber(currentRatingValue, thousandsSeparator)}
-          </span>
-        )}
+        <div
+          id={`${currentRatingId}-inner-bar`}
+          style={{
+            backgroundColor: getBgChartColor(),
+            ...getStyles(styles, Elements.Chart, currentRatingId)
+          }}
+          className={`${classes.filledBar} ${
+            showAnimation && classes.animations
+          }`}
+        >
+          {showCount && (
+            <span
+              className={classes.countContainer}
+              style={{
+                ...getStyles(styles, Elements.Count, currentRatingId)
+              }}
+              id={`${currentRatingId}-count`}
+            >
+              {formatNumber(currentRatingValue, thousandsSeparator)}
+            </span>
+          )}
+        </div>
       </div>
     </div>
   );
