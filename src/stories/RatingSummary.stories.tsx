@@ -19,9 +19,35 @@ export default {
       defaultValue: true,
       control: { type: 'boolean' }
     },
+    showAverageRating: {
+      defaultValue: true,
+      control: { type: 'boolean' }
+    },
     thousandsSeparator: {
+      defaultValue: ',',
       options: [',', '.'],
       control: { type: 'select' }
+    },
+    averageRatingPrecision: {
+      defaultValue: 1,
+      control: { type: 'number' }
+    },
+    ratingAverageSubText: {
+      defaultValue: 'reviews',
+      control: { type: 'text' }
+    },
+    ratingAverageIconProps: {
+      control: 'object',
+      fillColor: {
+        control: { type: 'color' }
+      },
+      bgColor: {
+        control: { type: 'color' }
+      },
+      defaultValue: {
+        fillColor: '#919191',
+        bgColor: '#F2F2F2'
+      }
     }
   }
 } as ComponentMeta<typeof Component>;
@@ -39,7 +65,7 @@ Default.args = {
     2: 57472,
     1: 134055
   },
-  onBarClick: (ratingId: string) => {
+  onChartClick: (ratingId: string) => {
     console.log('🚀 ~ ratingId:', ratingId);
   }
 };
