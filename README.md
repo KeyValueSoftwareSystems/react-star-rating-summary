@@ -4,7 +4,7 @@
 <a  href="https://www.npmjs.com/package/@keyvaluesystems/react-star-rating-summary"><img  src="https://badgen.net/npm/v/@keyvaluesystems/react-star-rating-summary?color=blue"  alt="npm version"></a>  <a  href="https://www.npmjs.com/package/@keyvaluesystems/react-star-rating-summary"  ><img  src="https://img.shields.io/npm/dw/@keyvaluesystems/react-star-rating-summary?label=Downloads"  /></a>  <a  href="https://github.com/KeyValueSoftwareSystems/react-vertical-stepper"><img  src="https://github.com/KeyValueSoftwareSystems/react-star-rating-summary/actions/workflows/update-and-publish.yml/badge.svg" alt=""  /></a>
 
 <div  align="center">
-  <img  src="./src/assets/rating-summary-example.png"  alt=""  width="594"  height="170"/>
+  <img  src="./src/assets/rating-summary-example.png"  alt=""  width="400"  height="170"/>
 </div>
 
 A ready to use star rating summary UI package on 5 star rating concept for React.
@@ -191,6 +191,7 @@ function App() {
     Label: (ratingId) => ({ fontSize: '12px' }),
     Count: (ratingId) => ({color: countColors[ratingId]})
   };
+
   return (
     <RatingSummary
       ratings={ratings}
@@ -210,16 +211,17 @@ export default App;
 - `AverageSubTextContainer` - overrides the style of sub-text container in the average section.
 - `AverageTotalReviews` - overrides the style of total no. of review's value in the average section.
 - `AverageSubText` - overrides the style of the sub-text adjacent to total no. of review in the average section.
-  Label = 'Label',
-  LabelStarIcon = 'LabelStarIcon'
+- `SummaryItemContainer` - overrides the style of summary item container, which consist of the label and bar chart for each rating.
 - `Label` - overrides the Label container style for each rating.
 - `LabelStarIcon` - overrides the style of the star icon in the label of each rating.
+- `ChartContainer` - overrides the style of bar chart container for each rating.
+- `FilledChartContainer` - overrides the style of filled part of bar chart for each rating.
 - `Chart` - overrides the Chart style for each rating.
 - `Count` - overrides the rating count style for each rating.
 
 >Note: if you provides both `chartColors` prop and overrides `Chart` styles using `styles` prop, the customizations via `styles` prop are given more priority.
 
-Example with the usage other props
+Example with the usage of other props
 ```jsx
 import React from 'react';
 import RatingSummary from '@keyvaluesystems/react-star-rating-summary';
@@ -255,18 +257,19 @@ function App() {
     Label: (ratingId) => ({ fontSize: '12px' }),
     Count: (ratingId) => ({color: countColors[ratingId]})
   };
+
   return (
     <RatingSummary
       ratings={ratings}
+      showAnimation={false}
+      showCount={false}
+      averageRatingPrecision={2}
+      ratingAverageIconProps={{
+        fillColor: 'green',
+        bgColor: 'red'
+      }}
+      ratingAverageSubText="total"
       renderLabel={(ratingId) => ratingId}
-			showAnimation={false}
-			showCount={false}
-			averageRatingPrecision={2}
-			ratingAverageIconProps={{
-				  fillColor: 'green',
-          bgColor: 'red'
-			}}
-			ratingAverageSubText="total"
     />
   );
 }
