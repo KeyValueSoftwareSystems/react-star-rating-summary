@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
-import { PartiallyFilledStarProp } from './types';
+import { StarProp } from './types';
 
-const PartiallyFilledStar: FC<PartiallyFilledStarProp> = (props) => {
+const Star: FC<StarProp> = (props) => {
   const { fillColor, bgColor, colorFilledFraction, id } = props;
 
   return (
@@ -27,4 +27,4 @@ const PartiallyFilledStar: FC<PartiallyFilledStarProp> = (props) => {
   );
 };
 
-export default PartiallyFilledStar;
+export default Star;

@@ -7,7 +7,7 @@ import {
   getWeightedAverage
 } from '../utils';
 import { IRatingAverageProp } from './types';
-import PartiallyFilledStar from './PartiallyFilledStar';
+import Star from './star';
 import { GenericElements, RATING_AVERAGE_DEFAULTS } from '../constants';
 import classes from './styles.module.scss';
 
@@ -42,19 +42,17 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
   return (
     <div
       className={classes.container}
-      style={{ ...styles[GenericElements.AverageContainer] }}
+      style={styles[GenericElements.AverageContainer]}
     >
       <div
         className={classes.averageRatingValue}
-        style={{ ...styles[GenericElements.Average] }}
+        style={styles[GenericElements.Average]}
       >
         {adjustDecimalPrecision(average, averageRatingPrecision)}
       </div>
       <div
         className={classes.iconsWrapper}
-        style={{
-          ...styles[GenericElements.AverageIconsWrapper]
-        }}
+        style={styles[GenericElements.AverageIconsWrapper]}
       >
         {Array(noOfCompleteStars)
           .fill(0)
@@ -62,9 +60,9 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
             <div
               key={`completely-filled-star-${index}`}
               className={classes.starImage}
-              style={{ ...styles[GenericElements.AverageStarIcon] }}
+              style={styles[GenericElements.AverageStarIcon]}
             >
-              <PartiallyFilledStar
+              <Star
                 fillColor={fillColor}
                 bgColor={bgColor}
                 colorFilledFraction={1}
@@ -76,9 +74,9 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
           <div
             key="fraction-filled-star"
             className={classes.starImage}
-            style={{ ...styles[GenericElements.AverageStarIcon] }}
+            style={styles[GenericElements.AverageStarIcon]}
           >
-            <PartiallyFilledStar
+            <Star
               fillColor={fillColor}
               bgColor={bgColor}
               colorFilledFraction={visibleStarFraction}
@@ -92,9 +90,9 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
             <div
               key={`unfilled-star-${index}`}
               className={classes.starImage}
-              style={{ ...styles[GenericElements.AverageStarIcon] }}
+              style={styles[GenericElements.AverageStarIcon]}
             >
-              <PartiallyFilledStar
+              <Star
                 fillColor={fillColor}
                 bgColor={bgColor}
                 colorFilledFraction={0}
@@ -105,12 +103,12 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
       </div>
       <div
         className={classes.subTextContainer}
-        style={{ ...styles[GenericElements.AverageSubTextContainer] }}
+        style={styles[GenericElements.AverageSubTextContainer]}
       >
-        <div style={{ ...styles[GenericElements.AverageTotalReviews] }}>
+        <div style={styles[GenericElements.AverageTotalReviews]}>
           {formatNumber(totalRatingCount, thousandsSeparator)}
         </div>
-        <div style={{ ...styles[GenericElements.AverageSubText] }}>
+        <div style={styles[GenericElements.AverageSubText]}>
           {ratingAverageSubText}
         </div>
       </div>

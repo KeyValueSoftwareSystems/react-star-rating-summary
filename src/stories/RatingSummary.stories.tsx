@@ -66,7 +66,7 @@ Default.args = {
     1: 134055
   },
   onChartClick: (ratingId: string) => {
-    console.log('🚀 ~ ratingId:', ratingId);
+    alert(`clicked on bar with rating-id: ${ratingId}`);
   }
 };
 
@@ -140,7 +140,13 @@ VariantWithCustomLabel.args = {
   )
 };
 
-const REVIEW_COUNT_COLOR = ['', 'white', 'black', 'red', 'blue', 'lightgreen'];
+const REVIEW_COUNT_COLOR = {
+  100: 'white',
+  200: 'black',
+  300: 'red',
+  400: 'blue',
+  500: 'lightgreen'
+};
 
 export const VariantWithCustomStyle = Template.bind({});
 VariantWithCustomStyle.args = {
@@ -159,10 +165,6 @@ VariantWithCustomStyle.args = {
       width: '20px',
       height: '20px'
     },
-    LabelStarIcon: () => ({
-      width: '15px',
-      height: '15px'
-    }),
     Label: () => ({ fontSize: '12px' }),
     Count: (ratingId: number) =>
       REVIEW_COUNT_COLOR[ratingId] && { color: REVIEW_COUNT_COLOR[ratingId] },

@@ -13,15 +13,11 @@ const RatingLabel: FC<IRatingLabelProp> = (props) => {
     <div
       className={classes.label}
       id={`${ratingId}-label`}
-      style={{
-        ...getStyles(styles, Elements.Label, ratingId)
-      }}
+      style={getStyles(styles, Elements.Label, ratingId)}
     >
       <img
         className={classes.starImage}
-        style={{
-          ...getStyles(styles, Elements.LabelStarIcon, ratingId)
-        }}
+        style={getStyles(styles, Elements.LabelStarIcon, ratingId)}
         src={starImg}
         alt=""
       />

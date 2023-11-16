@@ -27,7 +27,7 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
   } = props;
 
   const getRatingRanks = (): RatingRanks => {
-    if (Object.keys(ratingRanks).length) return { ...ratingRanks };
+    if (Object.keys(ratingRanks).length) return ratingRanks;
     return Object.keys(ratings).reduce(
       (accumulator, ratingId, index) => ({
         ...accumulator,
@@ -40,10 +40,7 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
   const ranks: RatingRanks = getRatingRanks();
 
   return (
-    <div
-      className={classes.container}
-      style={{ ...styles[GenericElements.Root] }}
-    >
+    <div className={classes.container} style={styles[GenericElements.Root]}>
       {showAverageRating && (
         <RatingAverage
           ratings={ratings}
@@ -58,7 +55,7 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
       )}
       <div
         className={classes.ratingsWrapper}
-        style={{ ...styles[GenericElements.SummaryContainer] }}
+        style={styles[GenericElements.SummaryContainer]}
         id="ratings-container"
       >
         {Object.keys(ratings)
@@ -67,9 +64,7 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
             <div
               key={ratingId}
               className={classes.ratingWrapper}
-              style={{
-                ...getStyles(styles, Elements.SummaryItemContainer, ratingId)
-              }}
+              style={getStyles(styles, Elements.SummaryItemContainer, ratingId)}
             >
               {(renderLabel && <>{renderLabel(ratingId)}</>) || (
                 <RatingLabel ratingId={ratingId} styles={styles} />

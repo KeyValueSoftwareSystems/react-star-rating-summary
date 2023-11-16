@@ -33,9 +33,7 @@ const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
   return (
     <div
       className={classes.barContainer}
-      style={{
-        ...getStyles(styles, Elements.ChartContainer, currentRatingId)
-      }}
+      style={getStyles(styles, Elements.ChartContainer, currentRatingId)}
     >
       <div
         style={{
@@ -64,9 +62,7 @@ const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
           {showCount && (
             <span
               className={classes.countContainer}
-              style={{
-                ...getStyles(styles, Elements.Count, currentRatingId)
-              }}
+              style={getStyles(styles, Elements.Count, currentRatingId)}
               id={`${currentRatingId}-count`}
             >
               {formatNumber(currentRatingValue, thousandsSeparator)}
