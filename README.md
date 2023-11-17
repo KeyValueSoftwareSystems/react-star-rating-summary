@@ -9,7 +9,7 @@
 
 A ready to use star rating summary UI package on 5 star rating concept for React.
 
-Try tweaking a rating summary component using this code sandbox link <a  href="https://codesandbox.io/s/star-rating-summary-x645zr"  >here</a>
+Try tweaking a rating summary component using this code sandbox link <a  href="https://codesandbox.io/s/star-rating-summary-x96m8d"  >here</a>
 
 ## Installation
 
