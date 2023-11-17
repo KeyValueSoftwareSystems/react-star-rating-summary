@@ -9,7 +9,7 @@
 
 A ready to use star rating summary UI package on 5 star rating concept for React.
 
-Try tweaking a rating summary component using this code sandbox link <a  href="https://codesandbox.io/s/vertical-stepper-demo-x24q7u"  >here</a>
+Try tweaking a rating summary component using this code sandbox link <a  href="https://codesandbox.io/s/star-rating-summary-x645zr"  >here</a>
 
 ## Installation
 
@@ -28,25 +28,86 @@ import React, { useState } from 'react';
 import RatingSummary from '@keyvaluesystems/react-star-rating-summary';
 
 function App() {
-  const ratingsVal = {
+  const ratingValues = {
     5: 100,
     4: 200,
     3: 300,
     2: 1000,
     1: 400
   };
+
   return (
     <RatingSummary
-      ratings={ratingsVal}
+      ratings={ratingValues}
     />
   );
 };
 
 export default App;
 ```
-The `ratings` prop expects an object with star rating number as key (can be 1, 2, 3, 4 and 5) and count of the respective ratings as the value.
+The `ratings` prop expects an object with star rating-id as key (ideally 1, 2, 3, 4 and 5) and count of the respective ratings as the value, encapsulating the distribution of user feedback for different ratings.
 
->Note: The total rating count will be calculated by the package and chart length for each rating will be considered with respect to total count. 
+>Note: The total rating count will be calculated by the package and bar length for each rating will be considered with respect to total count.
+
+
+## v1.0.0 (Major Version Change)
+
+This release includes breaking changes and feature updates. Please read this document carefully before upgrading
+
+### Breaking Changes
+
+- The `chartColors` prop has been renamed to `barColors`
+- The key `Chart` within `styles` prop to override the style of bar in the chart has been renamed to `Bar`.
+- Feature improvements have been made.<br>
+Please take note of these changes during the upgrade
+
+### Migration Steps
+
+- Update Prop names:<br>
+a. Rename the prop `chartColors` to `barColors`.<br>
+b. Rename the style key `Chart` to `Bar` within `styles` prop.
+
+<b>Before</b>
+
+```jsx
+  const stylesOverride = {
+    Chart: (ratingId) => ({...styles}),
+    Count: (ratingId) => ({...styles})
+  };
+
+ <RatingSummary
+    ratings={ratingValues}
+    chartColors={{
+      5: '#000',
+      4: 'yellow',
+      3: 'orange',
+      2: 'blue',
+      1: 'green'
+    }}
+    styles={stylesOverride}
+  />
+```
+
+<b>After</b>
+
+```jsx
+  const stylesOverride = {
+    Bar: (ratingId) => ({...styles}),
+    Count: (ratingId) => ({...styles})
+  };
+
+ <RatingSummary
+    ratings={ratingValues}
+    barColors={{
+      5: '#000',
+      4: 'yellow',
+      3: 'orange',
+      2: 'blue',
+      1: 'green'
+    }}
+    styles={stylesOverride}
+  />
+```
 
 ## Props
 
@@ -63,12 +124,12 @@ Props that can be passed to the component are listed below:
 	<tbody>
 		<tr>
 			<td><code><b>ratings:</b> object</code></td>
-			<td>An object with ratingIds as key and respective count as value.</td>
+			<td>An object where each key is a unique rating id serving as a label, and the corresponding value indicates the number of user reviews received for the respective rating id.</td>
 			<td><code>undefined</code></td>
 		</tr>
 		<tr>
-			<td><code><b>chartColors?:</b> object</code></td>
-			<td>An object with ratingIds as key and respective chart color as value.</td>
+			<td><code><b>barColors?:</b> object</code></td>
+			<td>An object with ratingIds as key and respective bar color as value.</td>
 			<td><code>undefined</code></td>
 		</tr>
 		<tr>
@@ -78,12 +139,12 @@ Props that can be passed to the component are listed below:
 		</tr>
 		<tr>
 			<td><code><b>showCount?:</b> boolean</code></td>
-			<td>Boolean to enable and disable showing count on the chart.</td>
+			<td>Boolean to enable and disable showing count on the bar in summary section.</td>
 			<td><code>true</code></td>
 		</tr>
 		<tr>
 			<td><code><b>showAnimation?:</b> boolean</code></td>
-			<td>Boolean to enable and disable showing animations and transitions on the chart.</td>
+			<td>Boolean to enable and disable showing animations and transitions on the bars in chart.</td>
 			<td><code>true</code></td>
 		</tr>
 		<tr>
@@ -93,13 +154,13 @@ Props that can be passed to the component are listed below:
 			<td><code>undefined</code></td>
 		</tr>
 		<tr>
-			<td><code><b>onChartClick?:</b> (ratingId: string): void</code></td>
-			<td>Click handler for each ratings chart</td>
+			<td><code><b>onBarClick?:</b> (ratingId: string): void</code></td>
+			<td>Click handler for each rating bar in chart</td>
 			<td><code>undefined</code></td>
 		</tr>
 		<tr>
 			<td><code><b>ratingRanks?:</b> object</code></td>
-			<td>An object with ratingIds as key and their respective weightage in number as value, used to compute average of ratings.</td>
+			<td>An object where each key is a rating id, and the corresponding value is the  rank or weightage in number associated with that rating id, utilized in the computation of the average of ratings, by considering the importance of each rating.</td>
 			<td><code>undefined</code></td>
 		</tr>
 		<tr>
@@ -139,12 +200,12 @@ Props that can be passed to the component are listed below:
 <a name="style-customizations"></a>
 ## Style Customizations
 
-Basic customization like changing the chart color for each ratings can be done using the `chartColors` prop:
+Basic customization like changing the bar color for each ratings can be done using the `barColors` prop:
 
 ```jsx
   <RatingSummary
-    ratings={ratings}
-    chartColors={{
+    ratings={ratingValues}
+    barColors={{
       5: '#000',
       4: 'yellow',
       3: 'orange',
@@ -155,6 +216,33 @@ Basic customization like changing the chart color for each ratings can be done u
 ```
 Further customizations can by done by overriding default styles using the `styles` prop,
 the below code shows all the overridable styles:
+
+```jsx
+<RatingSummary
+  ratings={ratingValues}
+  styles={{
+    Root?: {...styles},
+    SummaryContainer?: {...styles},
+    AverageContainer?: {...styles},
+    Average?: {...styles},
+    AverageIconsWrapper?: {...styles},
+    AverageStarIcon?: {...styles},
+    AverageSubTextContainer?: {...styles},
+    AverageSubText?: {...styles},
+    AverageTotalReviews?: {...styles},
+    SummaryItemContainer?: (id) => ({...styles}),
+    BarContainer?: (id) => ({...styles}),
+    FilledBarContainer?: (id) => ({...styles}),
+    Bar?: (id) => ({...styles}),
+    Count?: (id) => ({...styles}),
+    Label?: (id) => ({...styles}),
+    LabelStarIcon?: (id) => ({...styles}),
+  }}
+/>
+
+```
+
+For a more specific example, please refer the following:
 
 ```jsx
 import React from 'react';
@@ -170,13 +258,13 @@ function App() {
 		5: 500
 	};
 
-	const countColors = {
+  const countColors = {
 		1: 'red',
 		2: 'yellow',
 		3: 'blue',
 		4: 'orange',
 		5: 'white'
-	};
+  };
 
   const stylesOverride = {
     Average: { color: 'purple' },
@@ -202,6 +290,9 @@ function App() {
 
 export default App;
 ```
+
+Within the `styles` prop, following keys accept a style object:
+
 - `Root` - overrides the style of outermost container.
 - `SummaryContainer` - overrides the style of summary container.
 - `AverageContainer` - overrides the style of average section.
@@ -211,15 +302,18 @@ export default App;
 - `AverageSubTextContainer` - overrides the style of sub-text container in the average section.
 - `AverageTotalReviews` - overrides the style of total no. of review's value in the average section.
 - `AverageSubText` - overrides the style of the sub-text adjacent to total no. of review in the average section.
-- `SummaryItemContainer` - overrides the style of summary item container, which consist of the label and bar chart for each rating.
+
+Within the `styles` prop, following keys accept a function that returns the desired style for each element:
+
+- `SummaryItemContainer` - overrides the style of summary item container, which consist of the label and bar in the chart for each rating.
 - `Label` - overrides the Label container style for each rating.
 - `LabelStarIcon` - overrides the style of the star icon in the label of each rating.
-- `ChartContainer` - overrides the style of bar chart container for each rating.
-- `FilledChartContainer` - overrides the style of filled part of bar chart for each rating.
-- `Chart` - overrides the Chart style for each rating.
+- `BarContainer` - overrides the style of bar container for each rating.
+- `FilledBarContainer` - overrides the style of filled part of bar for each rating.
+- `Bar` - overrides the bar style in the chart for each rating.
 - `Count` - overrides the rating count style for each rating.
 
->Note: if you provides both `chartColors` prop and overrides `Chart` styles using `styles` prop, the customizations via `styles` prop are given more priority.
+>Note: if you provides both `barColors` prop and overrides `Bar` style using `styles` prop, the customizations via `Bar` in `styles` prop are given more priority.
 
 Example with the usage of other props
 ```jsx

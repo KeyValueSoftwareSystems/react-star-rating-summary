@@ -65,7 +65,7 @@ Default.args = {
     2: 57472,
     1: 134055
   },
-  onChartClick: (ratingId: string) => {
+  onBarClick: (ratingId: string) => {
     alert(`clicked on bar with rating-id: ${ratingId}`);
   }
 };
@@ -84,12 +84,12 @@ DefaultFixedWidthContainer.args = {
       width: '500px',
       padding: '20px'
     },
-    ChartContainer: () => ({
+    BarContainer: () => ({
       backgroundColor: '#F2F2F2',
       borderRadius: '20px',
       height: '20px'
     }),
-    Chart: () => ({
+    Bar: () => ({
       borderRadius: '20px',
       height: '20px'
     })
@@ -99,7 +99,7 @@ DefaultFixedWidthContainer.args = {
 export const VariantWithCustomBarColors = Template.bind({});
 VariantWithCustomBarColors.args = {
   ...Default.args,
-  chartColors: {
+  barColors: {
     5: '#F5BFD9',
     4: 'yellow',
     3: 'orange',
@@ -168,7 +168,7 @@ VariantWithCustomStyle.args = {
     Label: () => ({ fontSize: '12px' }),
     Count: (ratingId: number) =>
       REVIEW_COUNT_COLOR[ratingId] && { color: REVIEW_COUNT_COLOR[ratingId] },
-    Chart: () => ({ borderRadius: 10 })
+    Bar: () => ({ borderRadius: 10 })
   }
 };
 

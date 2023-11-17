@@ -1,4 +1,4 @@
-import { ChartColors, CustomStyles, IRatings } from '../rating-summary/types';
+import { BarColors, CustomStyles, IRatings } from '../rating-summary/types';
 
 export interface IRatingDistributionProp {
   currentRatingId: string;
@@ -7,7 +7,7 @@ export interface IRatingDistributionProp {
   showCount?: boolean;
   showAnimation?: boolean;
   styles?: CustomStyles;
-  chartColors?: ChartColors;
-  onChartClick?: (ratingId: string) => void;
+  barColors?: BarColors;
+  onBarClick?: (ratingId: string) => void;
   thousandsSeparator?: string;
 }

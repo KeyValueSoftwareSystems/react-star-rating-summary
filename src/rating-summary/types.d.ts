@@ -24,7 +24,7 @@ type SpecificCustomStyles = {
 
 export type CustomStyles = GenericCustomStyles | SpecificCustomStyles;
 
-export type ChartColors = { [value in keyof IRatings]: string };
+export type BarColors = { [value in keyof IRatings]: string };
 
 export interface RatingAverageIconProps {
   fillColor?: string;
@@ -40,8 +40,8 @@ export type ISummaryProp = {
   showCount?: boolean;
   showAnimation?: boolean;
   styles?: CustomStyles;
-  chartColors?: ChartColors;
-  onChartClick?: (ratingId: keyof IRatings) => void;
+  barColors?: BarColors;
+  onBarClick?: (ratingId: keyof IRatings) => void;
   showAverageRating?: boolean;
   customAverageFn?: CustomAverageFn;
   averageRatingPrecision?: number;

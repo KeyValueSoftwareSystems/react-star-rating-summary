@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { IRatingDistributionProp } from './types';
-import { DEFAULT_CHART_COLORS, Elements } from '../constants';
+import { DEFAULT_BAR_COLORS, Elements } from '../constants';
 import { formatNumber, getStyles, isValidNumber } from '../utils';
 import classes from './styles.module.scss';
 
@@ -13,47 +13,47 @@ const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
     showCount,
     showAnimation,
     styles = {},
-    chartColors,
-    onChartClick,
+    barColors,
+    onBarClick,
     thousandsSeparator
   } = props;
 
   // bar-width in percentage
   const barWidth = ((currentRatingValue || 0) / totalRatingCount) * 100;
 
-  const getBgChartColor = (): string => {
-    if (chartColors?.[currentRatingId]) return chartColors[currentRatingId];
+  const getBarBgColor = (): string => {
+    if (barColors?.[currentRatingId]) return barColors[currentRatingId];
 
     return isValidNumber(currentRatingId) &&
-      DEFAULT_CHART_COLORS[Number(currentRatingId)]
-      ? DEFAULT_CHART_COLORS[Number(currentRatingId)]
-      : DEFAULT_CHART_COLORS[1];
+      DEFAULT_BAR_COLORS[Number(currentRatingId)]
+      ? DEFAULT_BAR_COLORS[Number(currentRatingId)]
+      : DEFAULT_BAR_COLORS[1];
   };
 
   return (
     <div
       className={classes.barContainer}
-      style={getStyles(styles, Elements.ChartContainer, currentRatingId)}
+      style={getStyles(styles, Elements.BarContainer, currentRatingId)}
     >
       <div
         style={{
           width: `${barWidth}%`,
-          ...getStyles(styles, Elements.FilledChartContainer, currentRatingId)
+          ...getStyles(styles, Elements.FilledBarContainer, currentRatingId)
         }}
         className={`${classes.filledBarContainer}
               ${showAnimation && classes.transitions}
-              ${onChartClick && classes.cursorPointer}`}
+              ${onBarClick && classes.cursorPointer}`}
         id={`${currentRatingId}-bar`}
-        {...(onChartClick && {
+        {...(onBarClick && {
           role: 'presentation',
-          onClick: (): void => onChartClick(currentRatingId)
+          onClick: (): void => onBarClick(currentRatingId)
         })}
       >
         <div
           id={`${currentRatingId}-inner-bar`}
           style={{
-            backgroundColor: getBgChartColor(),
-            ...getStyles(styles, Elements.Chart, currentRatingId)
+            backgroundColor: getBarBgColor(),
+            ...getStyles(styles, Elements.Bar, currentRatingId)
           }}
           className={`${classes.filledBar} ${
             showAnimation && classes.animations

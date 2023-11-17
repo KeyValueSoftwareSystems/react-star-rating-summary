@@ -12,16 +12,16 @@ export enum GenericElements {
 
 export enum Elements {
   SummaryItemContainer = 'SummaryItemContainer',
-  ChartContainer = 'ChartContainer',
-  FilledChartContainer = 'FilledChartContainer',
-  Chart = 'Chart',
+  BarContainer = 'BarContainer',
+  FilledBarContainer = 'FilledBarContainer',
+  Bar = 'Bar',
   Count = 'Count',
   Label = 'Label',
   LabelStarIcon = 'LabelStarIcon'
 }
 export const INTERNATIONAL_NUMBER_SYSTEM_REGEX = /\B(?=(\d{3})+(?!\d))/g;
 
-export const DEFAULT_CHART_COLORS = {
+export const DEFAULT_BAR_COLORS = {
   1: '#ff8b5a',
   2: '#ffb337',
   3: '#ffd834',

@@ -71,7 +71,7 @@ describe('RatingSummary', () => {
     expect(mockRenderLabel).toHaveBeenCalledTimes(5);
   });
 
-  it('should display the chart with correct width based on the number of ratings', () => {
+  it('should display the bars in chart with correct width based on the number of ratings', () => {
     const { container } = render(<RatingSummary ratings={ratings} />);
 
     const oneStarBar = getById(container, '1-bar');
@@ -160,13 +160,13 @@ describe('RatingSummary', () => {
     expect(oneStarLabel).toHaveStyle('font-size: 10px');
   });
 
-  it('should be able to pass custom chart colors', () => {
-    const customChartColors = {
+  it('should be able to pass custom bar colors', () => {
+    const customBarColors = {
       1: 'purple',
       2: 'blue'
     };
     const { container } = render(
-      <RatingSummary ratings={ratings} chartColors={customChartColors} />
+      <RatingSummary ratings={ratings} barColors={customBarColors} />
     );
 
     const oneStarRatingBar = getById(container, '1-inner-bar');
@@ -175,14 +175,14 @@ describe('RatingSummary', () => {
     expect(twoStarRatingBar).toHaveStyle('background-color: blue');
   });
 
-  it('should be able to pass onChartClick handler', () => {
-    const onChartClick = jest.fn();
+  it('should be able to pass onBarClick handler', () => {
+    const onBarClick = jest.fn();
     const { container } = render(
-      <RatingSummary ratings={ratings} onChartClick={onChartClick} />
+      <RatingSummary ratings={ratings} onBarClick={onBarClick} />
     );
 
     const oneStarRatingBar = getById(container, '1-bar');
     oneStarRatingBar.click();
-    expect(onChartClick).toHaveBeenCalled();
+    expect(onBarClick).toHaveBeenCalled();
   });
 });

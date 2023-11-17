@@ -16,8 +16,8 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
     showCount = true,
     showAnimation = true,
     styles = {},
-    chartColors,
-    onChartClick,
+    barColors,
+    onBarClick,
     showAverageRating = true,
     customAverageFn,
     averageRatingPrecision = 1,
@@ -76,8 +76,8 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
                 showCount={showCount}
                 showAnimation={showAnimation}
                 styles={styles}
-                chartColors={chartColors}
-                onChartClick={onChartClick}
+                barColors={barColors}
+                onBarClick={onBarClick}
                 thousandsSeparator={thousandsSeparator}
               />
             </div>
