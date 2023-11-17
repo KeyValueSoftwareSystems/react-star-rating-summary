@@ -87,10 +87,9 @@ DefaultFixedWidthContainer.args = {
     BarContainer: () => ({
       backgroundColor: '#F2F2F2',
       borderRadius: '20px',
-      height: '20px'
+      overflow: 'hidden'
     }),
     Bar: () => ({
-      borderRadius: '20px',
       height: '20px'
     })
   }
