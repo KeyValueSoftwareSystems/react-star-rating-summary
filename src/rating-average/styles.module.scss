@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 4px;
+}
+.averageRatingValue {
+  font-size: 60px;
+  font-weight: 200;
+  margin: 0;
+}
+.iconsWrapper {
+  display: flex;
+  flex-direction: row;
+  column-gap: 4px;
+}
+.subTextContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #a9a9a9;
+  font-size: 14px;
+  min-width: 104px;
+  padding-top: 4px;
+  column-gap: 4px;
+}
+.starImage {
+  width: 18px;
+  height: 18px;
+}

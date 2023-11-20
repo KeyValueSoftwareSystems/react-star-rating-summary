@@ -1,81 +1,88 @@
-import React, { FC, useMemo } from 'react';
-import { ISummaryProp } from './types';
-import classes from './styles.module.scss';
-import RatingLabel from '../rating-label';
+import React, { FC } from 'react';
 
-import { defaultChartColors, Elements, RatingValue } from '../constants';
-import { formatToNumberWithCommas } from '../utils';
+import { ISummaryProp, RatingRanks } from './types';
+import RatingLabel from '../rating-label';
+import RatingDistributionItem from '../rating-distribution-item';
+import { Elements, GenericElements } from '../constants';
+import { getStyles, getTotalRatingCount } from '../utils';
+import RatingAverage from '../rating-average';
+import classes from './styles.module.scss';
 
 const RatingSummary: FC<ISummaryProp> = (props) => {
   const {
     ratings,
+    ratingRanks = {},
     renderLabel,
     showCount = true,
     showAnimation = true,
     styles = {},
-    chartColors,
-    onChartClick
+    barColors,
+    onBarClick,
+    showAverageRating = true,
+    customAverageFn,
+    averageRatingPrecision = 1,
+    ratingAverageIconProps = {},
+    thousandsSeparator,
+    ratingAverageSubText = 'reviews'
   } = props;
 
-  const totalRatingCount = useMemo(
-    (): number => Object.values(ratings).reduce((sum, num) => sum + (num || 0)),
-    [ratings]
-  );
-
-  const getBarWidth = (ratingId: RatingValue): number =>
-    (ratings[ratingId] || 0) / totalRatingCount;
-
-  const getStyles = (element: Elements, ratingId: RatingValue): object => {
-    const getElementStyle = styles[element];
-    if (getElementStyle) return getElementStyle(ratingId);
-    return {};
+  const getRatingRanks = (): RatingRanks => {
+    if (Object.keys(ratingRanks).length) return ratingRanks;
+    return Object.keys(ratings).reduce(
+      (accumulator, ratingId, index) => ({
+        ...accumulator,
+        [ratingId]: index + 1
+      }),
+      {}
+    );
   };
 
+  const ranks: RatingRanks = getRatingRanks();
+
   return (
-    <div className={classes.ratingsWrapper} id="ratings-container">
-      {Object.keys(ratings)
-        .reverse()
-        .map((ratingId) => (
-          <div key={ratingId} className={classes.ratingWrapper}>
-            {(renderLabel && <>{renderLabel(ratingId)}</>) || (
-              <RatingLabel ratingId={ratingId} />
-            )}
+    <div className={classes.container} style={styles[GenericElements.Root]}>
+      {showAverageRating && (
+        <RatingAverage
+          ratings={ratings}
+          ranks={ranks}
+          customAverageFn={customAverageFn}
+          averageRatingPrecision={averageRatingPrecision}
+          iconProps={ratingAverageIconProps}
+          styles={styles}
+          thousandsSeparator={thousandsSeparator}
+          ratingAverageSubText={ratingAverageSubText}
+        />
+      )}
+      <div
+        className={classes.ratingsWrapper}
+        style={styles[GenericElements.SummaryContainer]}
+        id="ratings-container"
+      >
+        {Object.keys(ratings)
+          .reverse()
+          .map((ratingId) => (
             <div
-              style={{ width: `${getBarWidth(Number(ratingId)) * 100}%` }}
-              className={`${classes.barWrapper}
-              ${showAnimation && classes.transitions}
-              ${onChartClick && classes.cursorPointer}`}
-              id={`${ratingId}-bar`}
-              onClick={(): void => onChartClick && onChartClick(ratingId)}
+              key={ratingId}
+              className={classes.ratingWrapper}
+              style={getStyles(styles, Elements.SummaryItemContainer, ratingId)}
             >
-              <div
-                style={{
-                  ...((defaultChartColors[ratingId] && {
-                    backgroundColor: defaultChartColors[ratingId]
-                  }) ||
-                    {}),
-                  ...((chartColors &&
-                    chartColors[ratingId] && {
-                    backgroundColor: chartColors[ratingId]
-                  }) ||
-                    {}),
-                  ...getStyles(Elements.Chart, Number(ratingId))
-                }}
-                className={`${classes.barContainer} ${showAnimation && classes.animations}`}
-              >
-                {showCount && (
-                  <span
-                    className={classes.countContainer}
-                    style={{ ...getStyles(Elements.Count, Number(ratingId)) }}
-                    id={`${ratingId}-count`}
-                  >
-                    {formatToNumberWithCommas(ratings[ratingId])}
-                  </span>
-                )}
-              </div>
+              {(renderLabel && <>{renderLabel(ratingId)}</>) || (
+                <RatingLabel ratingId={ratingId} styles={styles} />
+              )}
+              <RatingDistributionItem
+                currentRatingId={ratingId}
+                currentRatingValue={ratings[ratingId]}
+                totalRatingCount={getTotalRatingCount(ratings)}
+                showCount={showCount}
+                showAnimation={showAnimation}
+                styles={styles}
+                barColors={barColors}
+                onBarClick={onBarClick}
+                thousandsSeparator={thousandsSeparator}
+              />
             </div>
-          </div>
-        ))}
+          ))}
+      </div>
     </div>
   );
 };

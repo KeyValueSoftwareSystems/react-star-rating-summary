@@ -24,7 +24,6 @@
     "no-console": "warn",
     "@typescript-eslint/explicit-function-return-type": "error",
     "react/prop-types": "warn",
-    "indent": ["error", 2],
     "arrow-body-style": ["error", "as-needed"],
     "no-trailing-spaces": "error",
     "comma-dangle": "error",
@@ -40,10 +39,7 @@
   },
   "overrides": [
     {
-      "files": ["*.ts", "*.tsx"],
-      "rules": {
-        "indent": ["error", 2, { "SwitchCase": 1 }]
-      }
+      "files": ["*.ts", "*.tsx"]
     }
   ]
 }
