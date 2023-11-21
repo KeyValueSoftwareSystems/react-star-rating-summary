@@ -160,7 +160,7 @@ Props that can be passed to the component are listed below:
 		</tr>
 		<tr>
 			<td><code><b>ratingRanks?:</b> object</code></td>
-			<td>An object where each key is a rating id, and the corresponding value is the  rank or weightage in number associated with that rating id, utilized in the computation of the average of ratings, by considering the importance of each rating.</td>
+			<td>An object where each key represents a rating ID, and the associated value indicates the rank or weightage assigned to that specific rating. This ranking is taken into account when computing the average of ratings.</td>
 			<td><code>undefined</code></td>
 		</tr>
 		<tr>
