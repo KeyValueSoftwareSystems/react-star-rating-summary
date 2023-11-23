@@ -1,0 +1,41 @@
+@keyframes widthAnimation {
+  from {
+    width: 0px;
+  }
+  to {
+    width: 100%;
+  }
+}
+.barContainer {
+  width: 100%;
+  display: table-cell;
+}
+.filledBarContainer {
+  max-width: 100%;
+}
+.filledBar {
+  height: 24px;
+  overflow-x: visible;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.countContainer {
+  font-size: 11px;
+  line-height: 17px;
+  background-color: transparent;
+  color: #282b0b;
+  padding-left: 8px;
+}
+.transitions {
+  transition: width 0.3s ease-in-out;
+}
+.animations {
+  animation-name: widthAnimation;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: 1;
+}
+.cursorPointer {
+  cursor: pointer;
+}
