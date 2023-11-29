@@ -1,6 +1,6 @@
 {
   "name": "@keyvaluesystems/react-star-rating-summary",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "A ready to use rating summary component",
   "main": "build/index.js",
   "source": "src/index.tsx",
@@ -26,8 +26,21 @@
   "author": "Keyvalue",
   "license": "ISC",
   "homepage": "https://github.com/KeyValueSoftwareSystems/react-star-rating-summary",
-  "keywords": [ "library", "starter", "es6", "react", "package", "react-package", "typescript",
-  "rating", "star-rating","five-star-rating", "star-rating-component", "star-rating-widget", "review"],
+  "keywords": [
+    "library",
+    "starter",
+    "es6",
+    "react",
+    "package",
+    "react-package",
+    "typescript",
+    "rating",
+    "star-rating",
+    "five-star-rating",
+    "star-rating-component",
+    "star-rating-widget",
+    "review"
+  ],
   "devDependencies": {
     "@babel/cli": "^7.20.7",
     "@babel/core": "^7.20.12",
