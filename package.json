@@ -24,7 +24,7 @@
     "url": "git+https://github.com/KeyValueSoftwareSystems/react-star-rating-summary"
   },
   "author": "Keyvalue",
-  "license": "ISC",
+  "license": "MIT",
   "homepage": "https://github.com/KeyValueSoftwareSystems/react-star-rating-summary",
   "keywords": [
     "library",

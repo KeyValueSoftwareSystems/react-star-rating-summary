@@ -70,11 +70,6 @@ b. Rename the style key `Chart` to `Bar` within `styles` prop.
 <b>Before</b>
 
 ```jsx
-  const stylesOverride = {
-    Chart: (ratingId) => ({...styles}),
-    Count: (ratingId) => ({...styles})
-  };
-
  <RatingSummary
     ratings={ratingValues}
     chartColors={{
@@ -84,18 +79,16 @@ b. Rename the style key `Chart` to `Bar` within `styles` prop.
       2: 'blue',
       1: 'green'
     }}
-    styles={stylesOverride}
+    styles={{
+      Chart: (ratingId) => ({...styles}),
+      Count: (ratingId) => ({...styles})
+    }}
   />
 ```
 
 <b>After</b>
 
 ```jsx
-  const stylesOverride = {
-    Bar: (ratingId) => ({...styles}),
-    Count: (ratingId) => ({...styles})
-  };
-
  <RatingSummary
     ratings={ratingValues}
     barColors={{
@@ -105,7 +98,10 @@ b. Rename the style key `Chart` to `Bar` within `styles` prop.
       2: 'blue',
       1: 'green'
     }}
-    styles={stylesOverride}
+    styles={{
+      Bar: (ratingId) => ({...styles}),
+      Count: (ratingId) => ({...styles})
+    }}
   />
 ```
 
@@ -250,14 +246,6 @@ import RatingSummary from '@keyvaluesystems/react-star-rating-summary';
 
 function App() {
 
-  const ratings = {
-		1: 100,
-		2: 200,
-		3: 300,
-		4: 400,
-		5: 500
-	};
-
   const countColors = {
 		1: 'red',
 		2: 'yellow',
@@ -266,24 +254,28 @@ function App() {
 		5: 'white'
   };
 
-  const stylesOverride = {
-    Average: { color: 'purple' },
-    AverageStarIcon: {
-      width: '20px',
-      height: '20px'
-    },
-    LabelStarIcon: () => ({
-      width: '15px',
-      height: '15px'
-    }),
-    Label: (ratingId) => ({ fontSize: '12px' }),
-    Count: (ratingId) => ({color: countColors[ratingId]})
-  };
-
   return (
     <RatingSummary
-      ratings={ratings}
-      styles={stylesOverride}
+      ratings={{
+		    1: 100,
+		    2: 200,
+		    3: 300,
+		    4: 400,
+		    5: 500
+	    }}
+      styles={{
+        Average: { color: 'purple' },
+        AverageStarIcon: {
+          width: '20px',
+          height: '20px'
+        },
+        LabelStarIcon: () => ({
+          width: '15px',
+          height: '15px'
+        }),
+        Label: (ratingId) => ({ fontSize: '12px' }),
+        Count: (ratingId) => ({color: countColors[ratingId]})
+      }}
     />
   );
 }
@@ -322,39 +314,9 @@ import RatingSummary from '@keyvaluesystems/react-star-rating-summary';
 
 function App() {
 
-  const ratings = {
-		1: 100,
-		2: 200,
-		3: 300,
-		4: 400,
-		5: 500
-	};
-
-	const countColors = {
-		1: 'red',
-		2: 'yellow',
-		3: 'blue',
-		4: 'orange',
-		5: 'white'
-	};
-
-  const stylesOverride = {
-    Average: { color: 'purple' },
-    AverageStarIcon: {
-      width: '20px',
-      height: '20px'
-    },
-    LabelStarIcon: () => ({
-      width: '15px',
-      height: '15px'
-    }),
-    Label: (ratingId) => ({ fontSize: '12px' }),
-    Count: (ratingId) => ({color: countColors[ratingId]})
-  };
-
   return (
     <RatingSummary
-      ratings={ratings}
+      ratings={ratingValues}
       showAnimation={false}
       showCount={false}
       averageRatingPrecision={2}
