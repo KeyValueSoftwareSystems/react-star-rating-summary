@@ -176,7 +176,7 @@ Props that can be passed to the component are listed below:
 		</tr>
 		<tr>
 			<td><code><b>ratingAverageIconProps?:</b> object</code></td>
-			<td>An object defining the fill color and background color for customizing the appearance of star icon in the average rating section.</td>
+			<td>An object defining the fill color ( fillColor?: string ) and background color ( bgColor?: string ) for customizing the appearance of star icon in the average rating section.</td>
 			<td><code>undefined</code></td>
 		</tr>
 		<tr>
@@ -188,6 +188,11 @@ Props that can be passed to the component are listed below:
 			<td><code><b>ratingAverageSubText?:</b> string</code></td>
 			<td>A string used to customize the text accompanying the star rating average which provides additional information about the total number of reviews.</td>
 			<td><code>'reviews'</code></td>
+		</tr>
+    <tr>
+			<td><code><b>order?:</b> 'ORIGINAL' | 'REVERSE'</code></td>
+			<td>The order prop dictates the summary section's display order. Possible values are: 'ORIGINAL' or 'REVERSE'. For numeric ratingIds, it sorts in ascending (ORIGINAL) or descending (REVERSE) order. For string based ratingIds, it reflects the original/reversed order of keys in the ratings prop.</td>
+		<td><code>'REVERSE'</code></td>
 		</tr>
 	</tbody>
 </table>
@@ -247,22 +252,22 @@ import RatingSummary from '@keyvaluesystems/react-star-rating-summary';
 function App() {
 
   const countColors = {
-		1: 'red',
-		2: 'yellow',
-		3: 'blue',
-		4: 'orange',
-		5: 'white'
+	  1: 'red',
+	  2: 'yellow',
+	  3: 'blue',
+	  4: 'orange',
+	  5: 'white'
   };
 
   return (
     <RatingSummary
       ratings={{
-		    1: 100,
-		    2: 200,
-		    3: 300,
-		    4: 400,
-		    5: 500
-	    }}
+        1: 100,
+        2: 200,
+        3: 300,
+        4: 400,
+        5: 500
+      }}
       styles={{
         Average: { color: 'purple' },
         AverageStarIcon: {

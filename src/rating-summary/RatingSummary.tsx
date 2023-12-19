@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { ISummaryProp, RatingRanks } from './types';
 import RatingLabel from '../rating-label';
 import RatingDistributionItem from '../rating-distribution-item';
-import { Elements, GenericElements } from '../constants';
+import { Elements, GenericElements, ORDER } from '../constants';
 import { getStyles, getTotalRatingCount } from '../utils';
 import RatingAverage from '../rating-average';
 import classes from './styles.module.scss';
@@ -23,7 +23,8 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
     averageRatingPrecision = 1,
     ratingAverageIconProps = {},
     thousandsSeparator,
-    ratingAverageSubText = 'reviews'
+    ratingAverageSubText = 'reviews',
+    order = ORDER.REVERSE
   } = props;
 
   const getRatingRanks = (): RatingRanks => {
@@ -38,6 +39,8 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
   };
 
   const ranks: RatingRanks = getRatingRanks();
+
+  const ratingKeys = order === ORDER.REVERSE ? Object.keys(ratings).reverse() : Object.keys(ratings);
 
   return (
     <div className={classes.container} style={styles[GenericElements.Root]}>
@@ -58,9 +61,7 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
         style={styles[GenericElements.SummaryContainer]}
         id="ratings-container"
       >
-        {Object.keys(ratings)
-          .reverse()
-          .map((ratingId) => (
+        {ratingKeys.map((ratingId) => (
             <div
               key={ratingId}
               className={classes.ratingWrapper}

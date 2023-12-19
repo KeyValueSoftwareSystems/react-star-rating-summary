@@ -48,6 +48,10 @@ export default {
         fillColor: '#919191',
         bgColor: '#F2F2F2'
       }
+    },
+    order: {
+      control: { type: 'radio'},
+      options: ['ORIGINAL', 'REVERSE']
     }
   }
 } as ComponentMeta<typeof Component>;
@@ -205,3 +209,9 @@ VariantWithCustomRanks.args = {
   },
   ratingAverageSubText: 'total'
 };
+
+export const VariantWithOriginalOrder = Template.bind({});
+VariantWithOriginalOrder.args={
+  ...VariantWithStringBasedRatings.args,
+  order: 'ORIGINAL'
+}

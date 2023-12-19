@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 
-import { Elements, GenericElements } from '../constants';
+import { Elements, GenericElements, ORDER } from '../constants';
 
 export type StyleObjectType = React.CSSProperties;
 
@@ -48,4 +48,5 @@ export type ISummaryProp = {
   ratingAverageIconProps?: RatingAverageIconProps;
   thousandsSeparator?: string;
   ratingAverageSubText?: string;
+  order?: ORDER;
 };
