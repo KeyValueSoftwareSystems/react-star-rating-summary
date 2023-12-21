@@ -17,7 +17,9 @@ describe('RatingSummary', () => {
   };
   const total = 575;
   it('should render the RatingSummary component', () => {
-    const { container } = render(<RatingSummary ratings={ratings} order={ORDER.ORIGINAL} />);
+    const { container } = render(
+      <RatingSummary ratings={ratings} order={ORDER.ORIGINAL} />
+    );
     const ratingSummaryComponent = getById(container, 'ratings-container');
     if (!ratingSummaryComponent) throw Error('No Component present');
   });

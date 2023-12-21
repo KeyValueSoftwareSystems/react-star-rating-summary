@@ -40,7 +40,10 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
 
   const ranks: RatingRanks = getRatingRanks();
 
-  const ratingKeys = order === ORDER.REVERSE ? Object.keys(ratings).reverse() : Object.keys(ratings);
+  const ratingKeys =
+    order === ORDER.REVERSE
+      ? Object.keys(ratings).reverse()
+      : Object.keys(ratings);
 
   return (
     <div className={classes.container} style={styles[GenericElements.Root]}>
@@ -62,27 +65,27 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
         id="ratings-container"
       >
         {ratingKeys.map((ratingId) => (
-            <div
-              key={ratingId}
-              className={classes.ratingWrapper}
-              style={getStyles(styles, Elements.SummaryItemContainer, ratingId)}
-            >
-              {(renderLabel && <>{renderLabel(ratingId)}</>) || (
-                <RatingLabel ratingId={ratingId} styles={styles} />
-              )}
-              <RatingDistributionItem
-                currentRatingId={ratingId}
-                currentRatingValue={ratings[ratingId]}
-                totalRatingCount={getTotalRatingCount(ratings)}
-                showCount={showCount}
-                showAnimation={showAnimation}
-                styles={styles}
-                barColors={barColors}
-                onBarClick={onBarClick}
-                thousandsSeparator={thousandsSeparator}
-              />
-            </div>
-          ))}
+          <div
+            key={ratingId}
+            className={classes.ratingWrapper}
+            style={getStyles(styles, Elements.SummaryItemContainer, ratingId)}
+          >
+            {(renderLabel && <>{renderLabel(ratingId)}</>) || (
+              <RatingLabel ratingId={ratingId} styles={styles} />
+            )}
+            <RatingDistributionItem
+              currentRatingId={ratingId}
+              currentRatingValue={ratings[ratingId]}
+              totalRatingCount={getTotalRatingCount(ratings)}
+              showCount={showCount}
+              showAnimation={showAnimation}
+              styles={styles}
+              barColors={barColors}
+              onBarClick={onBarClick}
+              thousandsSeparator={thousandsSeparator}
+            />
+          </div>
+        ))}
       </div>
     </div>
   );

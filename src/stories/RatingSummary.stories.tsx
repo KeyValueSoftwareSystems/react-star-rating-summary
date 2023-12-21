@@ -50,7 +50,7 @@ export default {
       }
     },
     order: {
-      control: { type: 'radio'},
+      control: { type: 'radio' },
       options: ['ORIGINAL', 'REVERSE']
     }
   }
@@ -211,7 +211,7 @@ VariantWithCustomRanks.args = {
 };
 
 export const VariantWithOriginalOrder = Template.bind({});
-VariantWithOriginalOrder.args={
+VariantWithOriginalOrder.args = {
   ...VariantWithStringBasedRatings.args,
   order: 'ORIGINAL'
-}
+};

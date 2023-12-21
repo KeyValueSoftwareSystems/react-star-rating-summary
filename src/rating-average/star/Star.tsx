@@ -6,11 +6,7 @@ const Star: FC<StarProp> = (props) => {
   const { fillColor, bgColor, colorFilledFraction, id } = props;
 
   return (
-    <svg
-      width="100%"
-      viewBox="0 0 32 32"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg width="100%" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id={id} shapeRendering="crispEdges">
           <stop offset={colorFilledFraction} stopColor={fillColor} />
