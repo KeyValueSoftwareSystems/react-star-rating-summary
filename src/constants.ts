@@ -19,6 +19,12 @@ export enum Elements {
   Label = 'Label',
   LabelStarIcon = 'LabelStarIcon'
 }
+
+export enum ORDER {
+  ORIGINAL = 'ORIGINAL',
+  REVERSE = 'REVERSE'
+}
+
 export const INTERNATIONAL_NUMBER_SYSTEM_REGEX = /\B(?=(\d{3})+(?!\d))/g;
 
 export const DEFAULT_BAR_COLORS = {

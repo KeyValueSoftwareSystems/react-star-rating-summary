@@ -1,8 +1,10 @@
 import React from 'react';
 import { render, queryByAttribute } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
+
 import RatingSummary from '../rating-summary';
 import { IRatings } from '../rating-summary/types';
+import { ORDER } from '../constants';
 
 const getById = queryByAttribute.bind(null, 'id');
 describe('RatingSummary', () => {
@@ -15,7 +17,9 @@ describe('RatingSummary', () => {
   };
   const total = 575;
   it('should render the RatingSummary component', () => {
-    const { container } = render(<RatingSummary ratings={ratings} />);
+    const { container } = render(
+      <RatingSummary ratings={ratings} order={ORDER.ORIGINAL} />
+    );
     const ratingSummaryComponent = getById(container, 'ratings-container');
     if (!ratingSummaryComponent) throw Error('No Component present');
   });
