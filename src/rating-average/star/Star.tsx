@@ -4,7 +4,6 @@ import { StarProp } from './types';
 
 const Star: FC<StarProp> = (props) => {
   const { fillColor, bgColor, colorFilledFraction, borderColor, borderWidth = 2, id } = props;
-  
   const borderFallBackColor = borderColor || fillColor;
 
   return (

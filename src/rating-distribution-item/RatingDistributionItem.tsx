@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { IRatingDistributionProp } from './types';
 import { Elements, DEFAULT_COLOR } from '../constants';
-import { formatNumber, getStyles, isValidNumber, } from '../utils';
+import { formatNumber, getStyles } from '../utils';
 import classes from './styles.module.scss';
 
 const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {

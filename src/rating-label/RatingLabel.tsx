@@ -12,7 +12,7 @@ import Star from '../rating-average/star';
 const RatingLabel: FC<IRatingLabelProp> = (props) => {
   const { ratingId, styles, iconProps } = props;
   const { icon } = RATING_AVERAGE_DEFAULTS;
-  const { fillColor = icon.fillColor, bgColor } = iconProps || {};
+  const { fillColor = icon.fillColor } = iconProps || {};
 
   return (
     <div

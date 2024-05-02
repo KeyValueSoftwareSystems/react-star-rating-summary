@@ -51,6 +51,3 @@ export const getWeightedAverage = (
   const sumOfNumbers = getTotalRatingCount(data);
   return sumOfNumbers ? weightedSum / sumOfNumbers : 0;
 };
-
-export const isValidNumber = (value: string): boolean =>
-  !isNaN(parseFloat(value));
