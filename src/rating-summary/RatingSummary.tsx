@@ -22,6 +22,7 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
     customAverageFn,
     averageRatingPrecision = 1,
     ratingAverageIconProps = {},
+    ratingLabelIconProps = {},
     thousandsSeparator,
     ratingAverageSubText = 'reviews',
     order = ORDER.REVERSE
@@ -71,7 +72,7 @@ const RatingSummary: FC<ISummaryProp> = (props) => {
             style={getStyles(styles, Elements.SummaryItemContainer, ratingId)}
           >
             {(renderLabel && <>{renderLabel(ratingId)}</>) || (
-              <RatingLabel ratingId={ratingId} styles={styles} />
+              <RatingLabel ratingId={ratingId} styles={styles} iconProps={ratingLabelIconProps}/>
             )}
             <RatingDistributionItem
               currentRatingId={ratingId}

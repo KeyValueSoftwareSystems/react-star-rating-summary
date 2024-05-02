@@ -23,11 +23,6 @@ export default {
       defaultValue: true,
       control: { type: 'boolean' }
     },
-    thousandsSeparator: {
-      defaultValue: ',',
-      options: [',', '.'],
-      control: { type: 'select' }
-    },
     averageRatingPrecision: {
       defaultValue: 1,
       control: { type: 'number' }
@@ -45,8 +40,8 @@ export default {
         control: { type: 'color' }
       },
       defaultValue: {
-        fillColor: '#919191',
-        bgColor: '#F2F2F2'
+        fillColor: '#5D5FEF',
+        bgColor: '#FFFFFF'
       }
     },
     order: {
@@ -97,6 +92,12 @@ DefaultFixedWidthContainer.args = {
       height: '20px'
     })
   }
+};
+
+export const VariantWithThousandsSeparator = Template.bind({});
+VariantWithThousandsSeparator.args = {
+  ...Default.args,
+  thousandsSeparator: ","
 };
 
 export const VariantWithCustomBarColors = Template.bind({});
