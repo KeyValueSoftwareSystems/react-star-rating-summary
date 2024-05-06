@@ -26,9 +26,11 @@ export type CustomStyles = GenericCustomStyles | SpecificCustomStyles;
 
 export type BarColors = { [value in keyof IRatings]: string };
 
-export interface RatingAverageIconProps {
+export interface RatingIconProps {
   fillColor?: string;
   bgColor?: string;
+  borderColor?: string;
+  borderWidth?: number;
 }
 
 export type CustomAverageFn = (ratings: IRatings, ranks: RatingRanks) => number;
@@ -45,7 +47,8 @@ export type ISummaryProp = {
   showAverageRating?: boolean;
   customAverageFn?: CustomAverageFn;
   averageRatingPrecision?: number;
-  ratingAverageIconProps?: RatingAverageIconProps;
+  ratingAverageIconProps?: RatingIconProps;
+  ratingLabelIconProps?: RatingIconProps;
   thousandsSeparator?: string;
   ratingAverageSubText?: string;
   order?: ORDER;

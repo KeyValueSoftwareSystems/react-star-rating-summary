@@ -27,17 +27,11 @@ export enum ORDER {
 
 export const INTERNATIONAL_NUMBER_SYSTEM_REGEX = /\B(?=(\d{3})+(?!\d))/g;
 
-export const DEFAULT_BAR_COLORS = {
-  1: '#ff8b5a',
-  2: '#ffb337',
-  3: '#ffd834',
-  4: '#add633',
-  5: '#9fc05a'
-};
+export const DEFAULT_COLOR = "#5D5FEF";
 
 export const RATING_AVERAGE_DEFAULTS = {
   icon: {
-    fillColor: '#919191',
-    bgColor: '#F2F2F2'
+    fillColor: DEFAULT_COLOR,
+    bgColor: '#FFFFFF'
   }
 };

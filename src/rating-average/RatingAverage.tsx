@@ -24,7 +24,7 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
     thousandsSeparator,
     ratingAverageSubText
   } = props;
-  const { fillColor = icon.fillColor, bgColor = icon.bgColor } =
+  const { fillColor = icon.fillColor, bgColor = icon.bgColor, borderColor, borderWidth } =
     iconProps || {};
 
   const extractStarInfo = (average: number): [number, number, number] => {
@@ -65,6 +65,8 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
               <Star
                 fillColor={fillColor}
                 bgColor={bgColor}
+                borderColor={borderColor}
+                borderWidth={borderWidth}
                 colorFilledFraction={1}
                 id={`completely-filled-star-${index}`}
               />
@@ -79,6 +81,8 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
             <Star
               fillColor={fillColor}
               bgColor={bgColor}
+              borderColor={borderColor}
+              borderWidth={borderWidth}
               colorFilledFraction={visibleStarFraction}
               id="fraction-filled-star"
             />
@@ -95,6 +99,8 @@ const RatingAverage: FC<IRatingAverageProp> = (props) => {
               <Star
                 fillColor={fillColor}
                 bgColor={bgColor}
+                borderColor={borderColor}
+                borderWidth={borderWidth}
                 colorFilledFraction={0}
                 id={`unfilled-star-${index}`}
               />

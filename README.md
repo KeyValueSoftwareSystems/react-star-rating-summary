@@ -176,13 +176,13 @@ Props that can be passed to the component are listed below:
 		</tr>
 		<tr>
 			<td><code><b>ratingAverageIconProps?:</b> object</code></td>
-			<td>An object defining the fill color ( fillColor?: string ) and background color ( bgColor?: string ) for customizing the appearance of star icon in the average rating section.</td>
+			<td>An object defining the fill color ( fillColor?: string ), background color ( bgColor?: string ), border color (borderColor: string) and border width (borderWidth: number) for customizing the appearance of star icon in the average rating section.</td>
 			<td><code>undefined</code></td>
 		</tr>
 		<tr>
 			<td><code><b>thousandsSeparator?:</b> string</code></td>
 			<td>A string specifying the custom thousands separator for formatting a numerical value.</td>
-			<td><code>','</code></td>
+			<td><code>undefined</code></td>
 		</tr>
 		<tr>
 			<td><code><b>ratingAverageSubText?:</b> string</code></td>
@@ -193,6 +193,11 @@ Props that can be passed to the component are listed below:
 			<td><code><b>order?:</b> 'ORIGINAL' | 'REVERSE'</code></td>
 			<td>The order prop dictates the summary section's display order. Possible values are: 'ORIGINAL' or 'REVERSE'. For numeric ratingIds, it sorts in ascending (ORIGINAL) or descending (REVERSE) order. For string based ratingIds, it reflects the original/reversed order of keys in the ratings prop.</td>
 		<td><code>'REVERSE'</code></td>
+		</tr>
+    <tr>
+			<td><code><b>ratingLabelIconProps?:</b> object</code></td>
+			<td>An object defining the fill color ( fillColor?: string ), background color ( bgColor?: string ), border color (borderColor: string) and border width (borderWidth: number) for customizing the appearance of star icon in the progess bar label section.</td>
+			<td><code>undefined</code></td>
 		</tr>
 	</tbody>
 </table>

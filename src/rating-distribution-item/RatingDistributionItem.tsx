@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
 import { IRatingDistributionProp } from './types';
-import { DEFAULT_BAR_COLORS, Elements } from '../constants';
-import { formatNumber, getStyles, isValidNumber } from '../utils';
+import { Elements, DEFAULT_COLOR } from '../constants';
+import { formatNumber, getStyles } from '../utils';
 import classes from './styles.module.scss';
 
 const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
@@ -24,13 +24,11 @@ const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
   const getBarBgColor = (): string => {
     if (barColors?.[currentRatingId]) return barColors[currentRatingId];
 
-    return isValidNumber(currentRatingId) &&
-      DEFAULT_BAR_COLORS[Number(currentRatingId)]
-      ? DEFAULT_BAR_COLORS[Number(currentRatingId)]
-      : DEFAULT_BAR_COLORS[1];
+    return DEFAULT_COLOR;
   };
 
   return (
+    <>
     <div
       className={classes.barContainer}
       style={getStyles(styles, Elements.BarContainer, currentRatingId)}
@@ -59,7 +57,10 @@ const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
             showAnimation && classes.animations
           }`}
         >
-          {showCount && (
+        </div>
+      </div>
+      </div>
+    {showCount && (
             <span
               className={classes.countContainer}
               style={getStyles(styles, Elements.Count, currentRatingId)}
@@ -68,9 +69,7 @@ const RatingDistributionItem: FC<IRatingDistributionProp> = (props) => {
               {formatNumber(currentRatingValue, thousandsSeparator)}
             </span>
           )}
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 
